@@ -1,9 +1,8 @@
-1. int 3
+[I1. int 3
 2. double 7.4
 3. int 2
 4. double 3.4
-5. char 'f'
+5. 102
 6. int 0x00000004
-7. int 0x80000004
+7. int -
 8. 99.4
-
