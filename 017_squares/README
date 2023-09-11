@@ -1,4 +1,4 @@
- 1. Open the file "squares.c". Inside this file,
+2 1. Open the file "squares.c". Inside this file,
     you will find that I have already done steps 1--4
     for an algorithm which draws two (possibly overlapping)
     squares (one of #s and one of *s). 
