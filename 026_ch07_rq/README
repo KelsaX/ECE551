@@ -62,7 +62,6 @@ A. Tail recursion
 B. Mutual recursion
 C. Pairwise induction
 D. Strong induction
-
 8. Which of the following is an advantage of tail recursion, compared to head recursion?
 
 A. It requires passing fewer parameters.

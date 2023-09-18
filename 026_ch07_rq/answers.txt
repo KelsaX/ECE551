@@ -4,6 +4,6 @@ C
 B
 D
 C
-A
+B
 C
 D
