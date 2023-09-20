@@ -1,4 +1,5 @@
- 1. Execute the code in "test.c" by hand, and write the output
+
+1. Execute the code in "test.c" by hand, and write the output
     into a file called "answer.txt"
 
  2. Create a Makefile to compile test.c into a program called "test"

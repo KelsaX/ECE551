@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 void g(int x, int * y) {
   printf("In g, x = %d, *y = %d\n", x, *y);
   x++;
@@ -15,7 +14,6 @@ void f(int * a, int b) {
   g(*a, &b);
   printf("Back in f, *a = %d, b = %d\n", *a, b);
 }
-
 
 int main(void) {
   int x = 3;
