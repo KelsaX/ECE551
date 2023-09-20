@@ -105,7 +105,7 @@ E. This code does not compile.
 F. This code will crash.
 G. The behavior is undefined.
 H. None of the above.
-
+D
 10. What happens if you write:
 
  int data[6]  = {0, 1, 2} ;
