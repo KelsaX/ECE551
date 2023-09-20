@@ -1,11 +1,10 @@
-Grading at 09/20/2023:18:46:22.282269
-For commit ID b97ce71a0444fa5dd448c5e8df29c63c9c1073ed
-Grading at Wed Sep 20 02:46:22 PM EDT 2023
+Grading at 09/20/2023:18:48:42.718745
+For commit ID a6a60fbb71b67fc730c935f67b25a195f50e1c49
+Grading at Wed Sep 20 02:48:42 PM EDT 2023
 Attempting to compile test.c
 gcc -std=gnu99 -pedantic -Wall -c test.c
 gcc -o myTest test.o
 compiled
-Line_2_did_not_match
 Line_3_did_not_match
 Your file did not match the expected output
 Your output did not match what we expected.
