@@ -33,9 +33,6 @@ void numToBits(uint32_t * nums, int nNums, int * bits, int nBits) ;
       come first, and the least significant bit (bit 0) should come last.
       That is, bits[0] should be bit 31 of nums[0], bits[1] should
       be bit 30 of nums[0], and so on.
-   
-
-
  2. Compile and test your code. 
     We have provided a main function which will print test cases
     and your function's answer for them. We have provided the 
