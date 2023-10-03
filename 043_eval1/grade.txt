@@ -1,6 +1,6 @@
-Grading at 10/03/2023:21:29:18.182950
-For commit ID 6294172014ec09d1be3a722d2329a7d521153e9f
-Grading at Tue Oct  3 05:29:14 PM EDT 2023
+Grading at 10/03/2023:21:30:32.258651
+For commit ID 6e4668d64b24d25edcfcd346bae45cac8883b3d7
+Grading at Tue Oct  3 05:30:28 PM EDT 2023
 
 Compiling 
 rm -f *~ printSsData printFilteredSsData printLocalMax printSsPeriod
@@ -16,14 +16,13 @@ Your program successfully indicated a failure case
 Test case printFilteredSsData sunspots_data.csv 10
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printSsData sunspots_data.csvv
-Line_1_did_not_match
-Your file did not match the expected output
+Test case printSsData sunspots_data.csv
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printFilteredSsData sunspots_data.csv 71
 Your file matched the expected output
 
-You have FAILED one or more of your test cases
-Keep debugging
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
