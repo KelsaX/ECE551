@@ -13,24 +13,24 @@ ss_monthly_t parseLine(char * line) {
   //Extract the year numbers
   token = strtok(line, "-,");
   if (token == NULL) {
-    printf("Wrong input! No string!");
+    fprintf(stderr, "Wrong input! No string!\n");
     exit(EXIT_FAILURE);
   }
   else if (strlen(token) != 4) {
-    printf("Wrong input! A valid year must be 4 digits!");
+    fprintf(stderr, "Wrong input! A valid year must be 4 digits!\n");
     exit(EXIT_FAILURE);
   }
   else {
     ans.year = atoi(token);
     if (ans.year > 9999 || ans.year < 0) {
-      printf("Invalid year! Year must be in the range of [0,9999]");
+      fprintf(stderr, "Invalid year! Year must be in the range of [0,9999]\n");
       exit(EXIT_FAILURE);
     }
   }
   //Extract the month numbers
   token = strtok(NULL, "-,");
   if (token == NULL) {
-    printf("Wrong input!Invalid format！Maybe no ,");
+    fprintf(stderr, "Wrong input!Invalid format！Maybe no , \n");
     exit(EXIT_FAILURE);
   }
   else if (strlen(token) != 2) {
@@ -47,13 +47,13 @@ ss_monthly_t parseLine(char * line) {
   //Extract the last number
   token = strtok(NULL, "-,");
   if (token == NULL) {
-    printf("Wrong input! The third number does not exist!");
+    fprintf(stderr, "Wrong input! The third number does not exist!\n");
     exit(EXIT_FAILURE);
   }
   else {
     ans.num = atof(token);
     if (ans.num < 0) {
-      printf("Wrong input! The floating point number must be non-negative!");
+      fprintf(stderr, "Wrong input! The floating point number must be non-negative!\n");
       exit(EXIT_FAILURE);
     }
   }
@@ -63,6 +63,28 @@ ss_monthly_t parseLine(char * line) {
 
 void meanFilter(ss_monthly_t * data, size_t n, ss_monthly_t * mean, unsigned w) {
   // WRITE ME
+  if (w % 2 == 0 || w <= 0 || w >= n) {
+    fprintf(stderr, "Invalid w!");
+    exit(EXIT_FAILURE);
+  }
+  for (int i = 0; i < n; i++) {
+    int left = i - (w - 1) / 2;
+    int right = i + (w - 1) / 2;
+    if (left < 0) {
+      left = 0;
+    }
+    if (right > n - 1) {
+      right = n - 1;
+    }
+    double total = 0;
+    int count_num = right - left + 1;
+    for (int j = left; j <= right; j++) {
+      total += data[j].num;
+    }
+    mean[i].year = data[i].year;
+    mean[i].month = data[i].month;
+    mean[i].num = total / count_num;
+  }
 }
 
 double findLocalMax(ss_monthly_t * data, size_t n) {
