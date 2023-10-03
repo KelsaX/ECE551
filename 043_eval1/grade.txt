@@ -1,31 +1,10 @@
-Grading at 10/03/2023:22:32:29.572309
-For commit ID e3913e4faa2e8ea715f916079fef2e78a1e91b72
-Grading at Tue Oct  3 06:32:25 PM EDT 2023
+Grading at 10/03/2023:22:48:19.593364
+For commit ID 5340da67ccf8be1aa2fc6e62dc82b68af6f8d661
+Grading at Tue Oct  3 06:48:19 PM EDT 2023
 
 Compiling 
 rm -f *~ printSsData printFilteredSsData printLocalMax printSsPeriod
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printSsData.o -o printSsData
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printFilteredSsData.o -o printFilteredSsData
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printLocalMax.o -o printLocalMax
-gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printSsPeriod.o -o printSsPeriod
-Running your test cases
-+-----------------------------------------------------------------------+
-Test case printSsData invalid.csv
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printFilteredSsData sunspots_data.csv 10
-Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printSsData error_case1.csv
-Wrong input! A valid month must be 2 digits!Your program did not indicate a failure case
-+-----------------------------------------------------------------------+
-Test case printSsData sunspots_data.csv
-Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case printFilteredSsData sunspots_data.csv 71
-Your file matched the expected output
-
-You have FAILED one or more of your test cases
-Keep debugging
+The code did not compile!
 
 Overall Grade: NO GRADE YET
