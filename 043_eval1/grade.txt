@@ -1,0 +1,14 @@
+Grading at 10/03/2023:21:11:14.381122
+For commit ID 627866b7188087995ac84d01b032e0ae32536267
+Grading at Tue Oct  3 05:11:13 PM EDT 2023
+
+Compiling 
+rm -f *~ printSsData printFilteredSsData printLocalMax printSsPeriod
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printSsData.o -o printSsData
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printFilteredSsData.o -o printFilteredSsData
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printLocalMax.o -o printLocalMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 sunspots.c printSsPeriod.o -o printSsPeriod
+Running your test cases
+Cannot proceed without testcases.txt
+
+Overall Grade: NO GRADE YET
