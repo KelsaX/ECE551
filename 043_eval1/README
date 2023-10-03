@@ -178,6 +178,7 @@ case.
 If there are multiple largest values, pick the first occurence.
 
 If there are any errors, your program should print an appropriate error
+
 message to stderr and exit with a failure status.
 
 As always, you should test your code thoroughly before moving on to the next
