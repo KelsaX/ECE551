@@ -1,6 +1,7 @@
 #error
 printSsData invalid.csv
 printFilteredSsData sunspots_data.csv 10
+printSsData error_case1.csv
 
 #success
 printSsData sunspots_data.csv
