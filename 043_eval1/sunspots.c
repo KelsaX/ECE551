@@ -31,17 +31,17 @@ ss_monthly_t parseLine(char * line) {
   //Extract the month numbers
   token = strtok(NULL, ",");
   if (token == NULL) {
-    fprintf(stderr, "Wrong input!Invalid format！Maybe no , \n");
+    fprintf(stderr, "Wrong input!Invalid format! \n");
     exit(EXIT_FAILURE);
   }
   else if (strlen(token) != 2) {
-    printf("Wrong input! A valid month must be 2 digits!");
+    fprintf("Wrong input! A valid month must be 2 digits!");
     exit(EXIT_FAILURE);
   }
   else {
     ans.month = atoi(token);
     if (ans.month > 12 || ans.month < 0) {
-      printf("Wrong input! A valid month must be in the range of [0,12]");
+      fprintf("Wrong input! A valid month must be in the range of [0,12]");
       exit(EXIT_FAILURE);
     }
   }
