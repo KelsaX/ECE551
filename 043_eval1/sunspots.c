@@ -12,7 +12,7 @@ ss_monthly_t parseLine(char * line) {
   char * token;
 
   //Extract the year numbers
-  token = strtok(line, "-,");
+  token = strtok(line, "-");
   if (token == NULL) {
     fprintf(stderr, "Wrong input! No string!\n");
     exit(EXIT_FAILURE);
@@ -29,7 +29,7 @@ ss_monthly_t parseLine(char * line) {
     }
   }
   //Extract the month numbers
-  token = strtok(NULL, "-,");
+  token = strtok(NULL, ",");
   if (token == NULL) {
     fprintf(stderr, "Wrong input!Invalid format！Maybe no , \n");
     exit(EXIT_FAILURE);
@@ -46,7 +46,7 @@ ss_monthly_t parseLine(char * line) {
     }
   }
   //Extract the last number
-  token = strtok(NULL, "-,");
+  token = strtok(NULL, "\n");
   if (token == NULL) {
     fprintf(stderr, "Wrong input! The third number does not exist!\n");
     exit(EXIT_FAILURE);
