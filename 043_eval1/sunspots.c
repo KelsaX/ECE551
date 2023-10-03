@@ -35,13 +35,13 @@ ss_monthly_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
   else if (strlen(token) != 2) {
-    fprintf("Wrong input! A valid month must be 2 digits!");
+    fprintf(stderr, "Wrong input! A valid month must be 2 digits!");
     exit(EXIT_FAILURE);
   }
   else {
     ans.month = atoi(token);
     if (ans.month > 12 || ans.month < 0) {
-      fprintf("Wrong input! A valid month must be in the range of [0,12]");
+      fprintf(stderr, "Wrong input! A valid month must be in the range of [0,12]");
       exit(EXIT_FAILURE);
     }
   }
