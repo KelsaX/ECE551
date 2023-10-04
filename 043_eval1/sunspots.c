@@ -1,9 +1,39 @@
 #include "sunspots.h"
 
+#include <ctype.h>
 #include <math.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+/**
+ * Check if a given string represents an integer.
+ *
+ * param str - The input string to be checked.
+ * return true if the string represents an integer, false otherwise.
+ */
+bool isInteger(const char * str) {
+  if (str == NULL) {
+    return false;  // Input is a null pointer, not an integer
+  }
+
+  int len = strlen(str);
+
+  // Handle possible positive or negative signs
+  int start = 0;
+  if (str[0] == '+' || str[0] == '-') {
+    start =
+        1;  // If there is a positive or negative sign, start checking from the next character
+  }
+
+  // Check each character if it is a digit
+  for (int i = start; i < len; i++) {
+    if (!isdigit(str[i])) {
+      return false;  // If there is a non-digit character, it's not an integer
+    }
+  }
+
+  return true;
+}
 
 /**
  * Checks if a given string represents a valid number.
@@ -62,7 +92,7 @@ ss_monthly_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
   else {
-    if (isNumber(token)) {
+    if (isInteger(token)) {
       ans.year = atoi(token);
     }
     else {
@@ -85,7 +115,7 @@ ss_monthly_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
   else {
-    if (isNumber(token)) {
+    if (isInteger(token)) {
       ans.month = atoi(token);
     }
     else {
