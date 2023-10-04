@@ -1,8 +1,41 @@
 #include "sunspots.h"
 
 #include <math.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+bool isNumber(const char * str) {
+  int i = 0;
+  bool hasDecimal = false;
+
+  // 处理可能的正负号
+  if (str[i] == '+' || str[i] == '-') {
+    i++;
+  }
+
+  // 检查每个字符
+  while (str[i] != '\0') {
+    if (str[i] >= '0' && str[i] <= '9') {
+      // 数字字符
+    }
+    else if (str[i] == '.' && !hasDecimal) {
+      // 小数点字符，确保只有一个小数点
+      hasDecimal = true;
+    }
+    else {
+      // 非数字字符
+      return false;
+    }
+    i++;
+  }
+
+  // 如果字符串以小数点结尾也不是数字
+  if (str[i - 1] == '.') {
+    return false;
+  }
+
+  return true;
+}
 ss_monthly_t parseLine(char * line) {
   // WRITE ME
   ss_monthly_t ans;
@@ -52,7 +85,14 @@ ss_monthly_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
   else {
-    ans.num = atof(token);
+    if (isNumber(token)) {
+      ans.num = atof(token);
+    }
+    else {
+      fprintf(stderr, "Invalid input! The third part is not a number!");
+      exit(EXIT_FAILURE);
+    }
+
     if (ans.num < 0) {
       fprintf(stderr, "Wrong input! The floating point number must be non-negative!\n");
       exit(EXIT_FAILURE);
