@@ -4,38 +4,45 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+
+/**
+ * Checks if a given string represents a valid number.
+ * param str The input string to be checked.
+ * return true if the input string is a valid number, false otherwise.
+ */
 bool isNumber(const char * str) {
   int i = 0;
   bool hasDecimal = false;
 
-  // 处理可能的正负号
+  // Handle possible positive or negative signs
   if (str[i] == '+' || str[i] == '-') {
     i++;
   }
 
-  // 检查每个字符
+  // Check each character
   while (str[i] != '\0') {
     if (str[i] >= '0' && str[i] <= '9') {
-      // 数字字符
+      // Numeric character
     }
     else if (str[i] == '.' && !hasDecimal) {
-      // 小数点字符，确保只有一个小数点
+      // Decimal point character, ensure only one decimal point
       hasDecimal = true;
     }
     else {
-      // 非数字字符
+      // Non-numeric character
       return false;
     }
     i++;
   }
 
-  // 如果字符串以小数点结尾也不是数字
+  // If the string ends with a decimal point, it's not a valid number
   if (str[i - 1] == '.') {
     return false;
   }
 
   return true;
 }
+
 ss_monthly_t parseLine(char * line) {
   // WRITE ME
   ss_monthly_t ans;
