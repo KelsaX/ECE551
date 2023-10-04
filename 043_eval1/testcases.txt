@@ -7,6 +7,7 @@ printSsData error_case3.csv
 printSsData error_case4.csv
 printSsData error_case5.csv
 printFilteredSsData sunspots_data.csv 3.3
+printSsData error_case6.csv
 
 #success
 printSsData sunspots_data.csv
