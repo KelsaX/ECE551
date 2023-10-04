@@ -17,12 +17,7 @@ bool isInteger(const char * str) {
 
   int len = strlen(str);
 
-  // Handle possible positive or negative signs
   int start = 0;
-  if (str[0] == '+' || str[0] == '-') {
-    start =
-        1;  // If there is a positive or negative sign, start checking from the next character
-  }
 
   // Check each character if it is a digit
   for (int i = start; i < len; i++) {
@@ -42,11 +37,6 @@ bool isInteger(const char * str) {
 bool isNumber(const char * str) {
   int i = 0;
   bool hasDecimal = false;
-
-  // Handle possible positive or negative signs
-  if (str[i] == '+' || str[i] == '-') {
-    i++;
-  }
 
   // Check each character
   while (str[i] != '\0') {
