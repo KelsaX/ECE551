@@ -7,8 +7,8 @@
 #include <string.h>
 /**
  * Check if a given string represents an integer.
- * @param str - The input string to be checked.
- * @return true if the string represents an integer, false otherwise.
+ * parameter: str - The input string to be checked.
+ * return true if the string represents an integer, false otherwise.
  */
 bool isInteger(const char * str) {
   if (str == NULL) {
@@ -36,8 +36,8 @@ bool isInteger(const char * str) {
 
 /**
  * Checks if a given string represents a valid number.
- * @param str The input string to be checked.
- * @return true if the input string is a valid number, false otherwise.
+ * parameter: str The input string to be checked.
+ * return true if the input string is a valid number, false otherwise.
  */
 bool isNumber(const char * str) {
   int i = 0;
@@ -75,8 +75,8 @@ bool isNumber(const char * str) {
 /**
  * Parse a line of text into an ss_monthly_t structure.
  *
- * @param line The input string to be parsed.
- * @return An ss_monthly_t structure containing parsed data.
+ * parameter: line The input string to be parsed.
+ * return An ss_monthly_t structure containing parsed data.
  */
 ss_monthly_t parseLine(char * line) {
   // WRITE ME
@@ -172,10 +172,10 @@ ss_monthly_t parseLine(char * line) {
 /**
  * Apply a mean filter to smooth a series of monthly data points.
  *
- * @param data An array of ss_monthly_t representing the original data.
- * @param n The number of data points in the array.
- * @param mean An array to store the smoothed data after applying the filter.
- * @param w The width of the filter window (odd number) for calculating the mean.
+ * parameter: data An array of ss_monthly_t representing the original data.
+ * parameter: n The number of data points in the array.
+ * parameter: mean An array to store the smoothed data after applying the filter.
+ * parameter: w The width of the filter window (odd number) for calculating the mean.
  */
 void meanFilter(ss_monthly_t * data, size_t n, ss_monthly_t * mean, unsigned w) {
   // WRITE ME
@@ -215,10 +215,10 @@ void meanFilter(ss_monthly_t * data, size_t n, ss_monthly_t * mean, unsigned w) 
  * It scans the input array and returns the timestamp of the local maximum,
  * where the local maximum is defined as the data point with the highest 'num' value.
  *
- * @param data An array of ss_monthly_t representing monthly data points.
- * @param n The number of elements in the 'data' array.
+ * parameter: data An array of ss_monthly_t representing monthly data points.
+ * parameter: n The number of elements in the 'data' array.
  *
- * @return The timestamp (year + month/12.0) of the local maximum data point.
+ * return The timestamp (year + month/12.0) of the local maximum data point.
  *         If 'n' is 0, it exits with an error message.
  */
 double findLocalMax(ss_monthly_t * data, size_t n) {
@@ -245,9 +245,9 @@ double findLocalMax(ss_monthly_t * data, size_t n) {
 /**
  * Calculate the average time difference between timestamps.
  *
- * @param timeStamps An array of timestamps.
- * @param n The number of timestamps in the array.
- * @return The average time difference.
+ * parameter: timeStamps An array of timestamps.
+ * parameter: n The number of timestamps in the array.
+ * return The average time difference.
  */
 double calcSsPeriod(double * timeStamps, size_t n) {
   //WRITE ME
