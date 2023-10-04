@@ -1,6 +1,6 @@
-Grading at 10/04/2023:06:34:59.034968
-For commit ID e8df8aa9ac53281cfc628693fddd7ff7e03a700e
-Grading at Wed Oct  4 02:34:54 AM EDT 2023
+Grading at 10/04/2023:06:37:58.958355
+For commit ID 2363d97bd505b31feb47c975dec3993bc7abfa7f
+Grading at Wed Oct  4 02:37:53 AM EDT 2023
 
 Compiling 
 rm -f *~ printSsData printFilteredSsData printLocalMax printSsPeriod
@@ -20,6 +20,9 @@ Test case printSsData error_case1.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printSsData error_case2.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printSsData error_case3.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printSsData sunspots_data.csv
