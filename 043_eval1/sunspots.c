@@ -55,7 +55,13 @@ ss_monthly_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
   else {
-    ans.year = atoi(token);
+    if (isNumber(token)) {
+      ans.year = atoi(token);
+    }
+    else {
+      fprintf(stderr, "Invalid input! The first part is not a number!");
+      exit(EXIT_FAILURE);
+    }
     if (ans.year > 9999 || ans.year < 0) {
       fprintf(stderr, "Invalid year! Year must be in the range of [0,9999]\n");
       exit(EXIT_FAILURE);
@@ -72,7 +78,13 @@ ss_monthly_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
   else {
-    ans.month = atoi(token);
+    if (isNumber(token)) {
+      ans.month = atoi(token);
+    }
+    else {
+      fprintf(stderr, "Invalid input! The second part is not a number!");
+      exit(EXIT_FAILURE);
+    }
     if (ans.month > 12 || ans.month < 0) {
       fprintf(stderr, "Wrong input! A valid month must be in the range of [0,12]");
       exit(EXIT_FAILURE);
