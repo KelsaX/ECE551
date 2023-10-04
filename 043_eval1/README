@@ -174,7 +174,6 @@ so that you can use it in next step to figure out the period of the sunspots.
 
 In this particular problem, we treat an input array with 0 elements as an error
 case.
-
 If there are multiple largest values, pick the first occurence.
 
 If there are any errors, your program should print an appropriate error
