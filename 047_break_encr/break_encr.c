@@ -1,7 +1,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-void record_letter(FILE * f, char * arr) {
+void record_letter(FILE * f, int * arr) {
   int c;
 
   char firstA = 'a';
@@ -12,7 +12,7 @@ void record_letter(FILE * f, char * arr) {
     }
   }
 }
-int find_most(char * arr, int n) {
+int find_most(int * arr, int n) {
   int largestInd = 0;
   for (int i = 0; i < n; i++) {
     if (arr[i] > arr[largestInd]) {
@@ -31,7 +31,7 @@ int main(int argc, char ** argv) {
     perror("Could not open file");
     return EXIT_FAILURE;
   }
-  char arr[26] = {0};
+  int arr[26] = {0};
 
   record_letter(f, arr);
   if (fclose(f) != 0) {
