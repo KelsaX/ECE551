@@ -7,6 +7,7 @@ void record_letter(FILE * f, char * arr) {
   char firstA = 'a';
   while ((c = fgetc(f)) != EOF) {
     if (isalpha(c)) {
+      c = tolower(c);
       arr[c - firstA]++;
     }
   }
