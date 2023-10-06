@@ -40,7 +40,7 @@ int main(int argc, char ** argv) {
   }
   int size_arr = 26;
   int key = 0;
-  key = find_most(arr, size_arr) - 4;
+  key = (find_most(arr, size_arr) - 4 + 26) % 26;
   printf("%d\n", key);
   return EXIT_SUCCESS;
 }
