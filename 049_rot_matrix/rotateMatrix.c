@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 void rotateMatrix(FILE * f, char rotate[][10]) {
-  char line[12];
+  char line[12];  //为什么要十二个字符才包括换行符呢？？？
 
   int count = 0;
   char * lineEnd;

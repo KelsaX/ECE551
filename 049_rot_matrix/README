@@ -29,4 +29,3 @@ Hints:
 ------
   - You may find the strchr useful for error checking that
     you read a proper line (10 non-newline characters, then a newline).
-    
