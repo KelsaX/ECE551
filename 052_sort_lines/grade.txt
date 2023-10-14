@@ -1,0 +1,21 @@
+Grading at 10/14/2023:08:52:46.266179
+For commit ID 71ffba720b4cdcb95044269611c1a7d23eea4dfa
+Grading at Sat Oct 14 04:52:41 AM EDT 2023
+Attempting to compile sortLines.c
+#################################################
+testcase 1:
+testcase 1 passed, your program successfully indicated a failure
+#################################################
+testcase2:
+Your output is correct
+valgrind was clean
+#################################################
+testcase3:
+Your output is correct
+valgrind was clean
+#################################################
+testcase4:
+Your output is correct
+valgrind was clean
+
+Overall Grade: A
