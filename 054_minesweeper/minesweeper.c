@@ -1,3 +1,4 @@
+//问random函数两次调用产生值是否一样
 #include <assert.h>
 #include <limits.h>
 #include <stdio.h>
