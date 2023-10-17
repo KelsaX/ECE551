@@ -41,7 +41,33 @@ void addRandomMine(board_t * b) {
 
 board_t * makeBoard(int w, int h, int numMines) {
   // WRITE ME!
-  return NULL;
+  board_t * newBoard = malloc(sizeof(*newBoard));
+  if (newBoard == NULL) {
+    perror("could not allocate new  memory for newboard");
+    exit(EXIT_FAILURE);
+  }
+  newBoard->height = h;
+  newBoard->width = w;
+  newBoard->totalMines = numMines;
+  newBoard->board = malloc(h * sizeof(int *));
+  if (newBoard->board == NULL) {
+    perror("fail to allocate memory for board!");
+    exit(EXIT_FAILURE);
+  }
+  for (int i = 0; i < h; i++) {
+    newBoard->board[i] = malloc(w * sizeof(int));
+
+    if (newBoard->board[i] == NULL) {
+      perror("fail to allocate memory for board row!");
+      exit(EXIT_FAILURE);
+    }
+    for (int j = 0; j < w; j++) {
+      newBoard->board[i][j] = UNKNOWN;
+    }
+  }
+  addRandomMine(newBoard);
+
+  return newBoard;
 }
 
 /* Print the board with 
@@ -102,7 +128,21 @@ void printBoard(board_t * b) {
 
 int countMines(board_t * b, int x, int y) {
   // WRITE ME!
-  return 0;
+  int nx = 0;
+  int ny = 0;
+  int mineArround = 0;
+  for (int dx = -1; dx <= 1; dx++) {
+    for (int dy = -1; dy <= 1; dy++) {
+      nx = dx + x;
+      ny = dy + y;
+      if (nx >= 0 && nx < b->width && ny >= 0 && ny < b->height) {
+        if (IS_MINE(b->board[ny][nx])) {
+          mineArround++;
+        }
+      }
+    }
+  }
+  return mineArround;
 }
 
 /* Determine action of selected square
@@ -141,6 +181,11 @@ int checkWin(board_t * b) {
 
 void freeBoard(board_t * b) {
   // WRITE ME!
+  for (int i = 0; i < b->height; i++) {
+    free(b->board[i]);
+  }
+  free(b->board);
+  free(b);
 }
 
 /* Read and validate positive integer from player */
