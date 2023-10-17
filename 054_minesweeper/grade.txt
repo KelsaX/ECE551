@@ -1,0 +1,20 @@
+Grading at 10/17/2023:23:29:56.461108
+For commit ID 40d002e98ebb02ccef4c56827da8e5514b950593
+Grading at Tue Oct 17 07:29:51 PM EDT 2023
+Attempting to compile minesweeper.c
+#################################################
+Test case 1:
+Your output is correct
+Valgrind was clean
+#################################################
+Test case 2:
+Your output is correct
+Valgrind was clean
+#################################################
+Test case 3:
+Your output is incorrect
+#################################################
+Test case 4:
+Your output is incorrect
+
+Overall Grade: F
