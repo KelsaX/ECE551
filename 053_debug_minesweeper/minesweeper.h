@@ -1,5 +1,4 @@
 #include <stdlib.h>
-
 #define CLICK_KNOWN_MINE -2
 #define CLICK_INVALID -1
 #define CLICK_CONTINUE 0
