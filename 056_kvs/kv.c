@@ -88,13 +88,6 @@ void freeKVs(kvarray_t * pairs) {
   free(pairs);
 }
 
-void printKVs(kvarray_t * pairs) {
-  //WRITE ME
-  for (int i = 0; i < pairs->size_kv; i++) {
-    printf("key = '%s' value = '%s'\n", pairs->kvArr[i]->key, pairs->kvArr[i]->value);
-  }
-}
-
 char * lookupValue(kvarray_t * pairs, const char * key) {
   //WRITE ME
   for (int i = 0; i < pairs->size_kv; i++) {
