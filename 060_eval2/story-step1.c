@@ -8,11 +8,35 @@ void printNewStory(FILE * f) {
   char * line = NULL;
   size_t sz = 0;
   while (getline(&line, &sz, f) > 0) {
-    char * token = NULL;
+    // char * token = NULL;
     char * category_name = NULL;
+    char * first_dilimeter = NULL;
     // token = strtok(line, "_");
     //while((token = strtok(NULL, "_"))!=NULL){
-    while ((strchr(line, '_') != NULL)) {
+    while ((first_dilimeter = strchr(line, '_')) != NULL) {
+      //  int beginingLen=first_dilimeter-line;
+      char * second_dilimeter = NULL;
+      second_dilimeter = strchr(first_dilimeter + 1, '_');
+      if (second_dilimeter == NULL) {
+        perror("missing the second '_'\n");
+        exit(EXIT_FAILURE);
+      }
+      char * remainning = strdup(second_dilimeter + 1);
+      //  printf("%s", remainning);
+      second_dilimeter[0] = '\0';
+      //category_name = strtok(first_dilimeter, "_");
+      category_name = strdup(first_dilimeter + 1);
+      //   printf("%s", category_name);
+      const char * replace_word = chooseWord(category_name, NULL);
+      //int category_name_len = strlen(category_name);
+      first_dilimeter[0] = '\0';
+      strcat(line, replace_word);
+      strcat(line, remainning);
+      free(remainning);
+      free(category_name);
+      //      printf("%s", line);
+
+      /*
       int beginingLen = 0;
       if (line[0] == '_') {
         token = NULL;
@@ -45,9 +69,13 @@ void printNewStory(FILE * f) {
       //printf("%s", replac f5e_word);
       //  printf("%s", line);
     }
-    //char* remaining=strtok(NULL,"\n");
+}
+      */
+      //char* remaining=strtok(NULL,"\n");
+    }
     printf("%s", line);
   }
+  free(line);
 }
 
 int main(int argc, char ** argv) {
