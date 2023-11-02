@@ -94,11 +94,9 @@ int main(int argc, char ** argv) {
   // perror("could not close the file!");
   // return (EXIT_FAILURE);
   //}
-
-  printStory(story, lineNum);
-  //  for (int i = 0; i < lineNum; i++) {
-  //  printf("%s\n", story[i]);
-  // }
+  for (int i = 0; i < lineNum; i++) {
+    printf("%s\n", story[i]);
+  }
   freeStory(story, lineNum);
   return (EXIT_SUCCESS);
 }

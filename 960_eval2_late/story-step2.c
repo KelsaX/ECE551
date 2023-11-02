@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "provided.h"
-
+#include "rand_story.h"
+/*
 int lookUpCat(const char * name, char * newWord, catarray_t * myCatarray) {
   for (size_t i = 0; i < myCatarray->n; i++) {
     if (strcmp(name, myCatarray->arr[i].name) == 0) {
@@ -70,27 +70,28 @@ void freeCatarry(catarray_t * myCat) {
   free(myCat->arr);
   free(myCat);
 }
-
+*/
 int main(int argc, char ** argv) {
   if (argc != 2) {
     perror("the command argument is wrong!");
     return (EXIT_FAILURE);
   }
-  FILE * f = fopen(argv[1], "r");
-  if (f == NULL) {
-    perror("could not open the file!");
-    return (EXIT_FAILURE);
-  }
+  //FILE * f = fopen(argv[1], "r");
+  // if (f == NULL) {
+  //perror("could not open the file!");
+  //return (EXIT_FAILURE);
+  //}
   catarray_t * myCatarray = malloc(sizeof(*myCatarray));
   myCatarray->arr = NULL;
   myCatarray->n = 0;
-  readCat(myCatarray, f);
+
+  readCat(myCatarray, argv[1]);
   printWords(myCatarray);
   freeCatarry(myCatarray);
-  if (fclose(f) != 0) {
-    perror("could not close the file!");
-    return (EXIT_FAILURE);
-  }
+  //if (fclose(f) != 0) {
+  // perror("could not close the file!");
+  // return (EXIT_FAILURE);
+  //}
 
   return (EXIT_SUCCESS);
 }
