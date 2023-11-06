@@ -21,5 +21,5 @@ void parseCat(char * line, catarray_t * myCatarray);
 void readCat(catarray_t * myCatarray, char * filename);
 void freeCatarry(catarray_t * myCat);
 char * usePreviousWords(size_t index, category_t * usedWords);
-int isPositiveInteger(const char * category_name);
+int isValidPositiveInteger(const char * category_name, category_t * usedWords);
 #endif

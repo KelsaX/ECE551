@@ -4,17 +4,26 @@
 #include <string.h>
 
 // Function to check if a given string represents a positive integer.
-int isPositiveInteger(const char * category_name) {
+int isValidPositiveInteger(const char * category_name, category_t * usedWords) {
   // Check if the pointer is NULL, string is empty, or starts with '0'.
   // These conditions mean it is not a positive integer.
   if ((!category_name) || (*category_name == '\0') || (*category_name == '0')) {
     return 0;  // Return 0 (false) if any of the above conditions are true.
   }
+  char * endptr;
+  size_t index = strtol(category_name, &endptr, 10);
   while (*category_name) {
     if (!isdigit(*category_name)) {
       return 0;  // If the current character is not a digit, return 0 (false).
     }
     category_name++;
+  }
+  // printf("the index char is: %s", category_name);
+  // char * endptr;
+  // size_t index = strtol(category_name, &endptr, 10);
+  // printf("the index is %ld\n", index);
+  if (index > usedWords->n_words) {
+    return 0;
   }
   // If all characters were digits and we didn't start with '0',
   // the string represents a positive integer, so return 1 (true).
@@ -173,22 +182,23 @@ char ** getNewStory(char * filename,
       // story = realloc(story, ((*lineNum) + 1) * sizeof(*story));
       // story[*lineNum] = NULL;
       // If the category name is an integer, use it to index into the used words.
-      if (isPositiveInteger(category_name)) {
-        size_t index = atoi(category_name);
+      if (isValidPositiveInteger(category_name, usedWords)) {
+        char * endptr;
+        size_t index = strtol(category_name, &endptr, 10);
         // If the index is out of range, print an error and exit.
-        if (index > usedWords->n_words) {
-          perror("the index is out of range!");
-          //    free(remainning);
-          // free(category_name);
-          // freeUsedWords(usedWords);
-          // freeCatarry(myCatarray);
-          // free(line);
-          // freeStory(story, *lineNum);
-          //  if (fclose(f) != 0) {
-          // perror("could not close the file!");
-          // }
-          exit(EXIT_FAILURE);
-        }
+        // if (index > usedWords->n_words) {
+        // perror("the index is out of range!");
+        //    free(remainning);
+        // free(category_name);
+        // freeUsedWords(usedWords);
+        // freeCatarry(myCatarray);
+        // free(line);
+        // freeStory(story, *lineNum);
+        //  if (fclose(f) != 0) {
+        // perror("could not close the file!");
+        // }
+        // exit(EXIT_FAILURE);
+        // }
         // Retrieve the word used at the specified index.
         replace_word = usePreviousWords(index, usedWords);
       }
