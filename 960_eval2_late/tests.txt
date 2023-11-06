@@ -4,7 +4,7 @@ story-step1 wrongstory2.txt
 story-step2 words.txt
 story-step2 mytrickywords.txt
 story-step3 words.txt story2.txt
-stoty-step3 words.txt step3_test1.txt
+stoty-step3 words.txt wrongstory2.txt
 stoty-step3 words.txt step3_test2.txt
 stoty-step3 words.txt step3_test3.txt
 story-step4 words.txt story2.txt
