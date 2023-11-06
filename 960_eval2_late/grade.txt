@@ -1,6 +1,6 @@
-Grading at 11/06/2023:23:56:42.761258
-For commit ID 8fe0dcabca20fd4a0b5db5337ffcdae7a1c26f52
-Grading at Mon Nov  6 06:56:33 PM EST 2023
+Grading at 11/06/2023:23:57:53.073676
+For commit ID 3e30e2c68afd4f85d05920a63f9062b2f57f6419
+Grading at Mon Nov  6 06:57:43 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -70,6 +70,11 @@ Your output looks good. Lets check valgrind
 Valgrind was clean
 
 2.5: Current test is story-step2 mytrickywords4.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+2.6: Current test is story-step2 mytrickywords5.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
