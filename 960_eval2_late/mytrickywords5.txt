@@ -1,0 +1,4 @@
+:animal::
+animal:walrus
+place:cave
+adjective:pecu:liar
