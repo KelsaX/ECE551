@@ -1,4 +1,4 @@
-For this evaluative assignment, you will write a program to tell a random
+1For this evaluative assignment, you will write a program to tell a random
 story (kind of like Mad Libs) that generates a story, given a story
 template and a list of words to choose from.
 

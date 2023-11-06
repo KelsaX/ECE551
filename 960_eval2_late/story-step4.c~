@@ -1,0 +1,41 @@
+#include "rand_story.h"
+int main(int argc, char ** argv) {
+  if (argc != 3 && argc != 4) {
+    perror("the command line arguments are wrong!");
+    return (EXIT_FAILURE);
+  }
+  else {
+    catarray_t * myCatarray = malloc(sizeof(*myCatarray));
+    myCatarray->arr = NULL;
+    myCatarray->n = 0;
+    // readCat(myCatarray, argv[1]);  //store the name and words in myCatarray
+    int reusable = 0;
+    char * catFile = NULL;
+    char * storyFile = NULL;
+    if (argc == 3) {
+      reusable = 1;
+      catFile = argv[1];
+      storyFile = argv[2];
+    }
+    else if (argc == 4 && strcmp(argv[1], "-n") == 0) {
+      reusable = 0;
+      catFile = argv[2];
+      storyFile = argv[3];
+    }
+    else {
+      perror("the first argument should be -n");
+      return (EXIT_FAILURE);
+    }
+    readCat(myCatarray, catFile);
+    int lineNum = 0;
+    char ** story = getNewStory(storyFile,
+                                myCatarray,
+                                &lineNum,
+                                reusable);  //read the story and get the new story
+    printStory(story, lineNum);
+    freeStory(story, lineNum);
+    freeCatarry(myCatarray);
+  }
+
+  return (EXIT_SUCCESS);
+}

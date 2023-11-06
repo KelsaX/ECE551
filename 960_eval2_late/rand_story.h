@@ -9,7 +9,11 @@
 
 //any functions you want your main to use
 void freeUsedWords(category_t * usedWords);
-char ** getNewStory(char * filename, catarray_t * myCatarray, int * lineNum);
+void deleteUsed(catarray_t * myCatarray, char * replace_word, char * category_name);
+char ** getNewStory(char * filename,
+                    catarray_t * myCatarray,
+                    int * lineNum,
+                    int reusable);
 void printStory(char ** story, int lineNum);
 void freeStory(char ** story, int lineNum);
 int lookUpCat(const char * name, char * newWord, catarray_t * myCatarray);

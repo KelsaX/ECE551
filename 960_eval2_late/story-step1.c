@@ -89,7 +89,7 @@ int main(int argc, char ** argv) {
   // return (EXIT_FAILURE);
   //}
   int lineNum = 0;
-  char ** story = getNewStory(argv[1], NULL, &lineNum);
+  char ** story = getNewStory(argv[1], NULL, &lineNum, 1);
   //if (fclose(f) != 0) {
   // perror("could not close the file!");
   // return (EXIT_FAILURE);

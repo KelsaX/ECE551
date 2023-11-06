@@ -9,8 +9,8 @@ int main(int argc, char ** argv) {
   myCatarray->n = 0;
   readCat(myCatarray, argv[1]);  //store the name and words in myCatarray
   int lineNum = 0;
-  char ** story =
-      getNewStory(argv[2], myCatarray, &lineNum);  //read the story and get the new story
+  char ** story = getNewStory(
+      argv[2], myCatarray, &lineNum, 1);  //read the story and get the new story
   printStory(story, lineNum);
   freeStory(story, lineNum);
   freeCatarry(myCatarray);
