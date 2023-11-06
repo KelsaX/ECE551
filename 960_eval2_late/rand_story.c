@@ -178,15 +178,15 @@ char ** getNewStory(char * filename,
         // If the index is out of range, print an error and exit.
         if (index > usedWords->n_words) {
           perror("the index is out of range!");
-          free(remainning);
-          free(category_name);
-          freeUsedWords(usedWords);
-          freeCatarry(myCatarray);
-          free(line);
-          freeStory(story, *lineNum);
-          if (fclose(f) != 0) {
-            perror("could not close the file!");
-          }
+          //    free(remainning);
+          // free(category_name);
+          // freeUsedWords(usedWords);
+          // freeCatarry(myCatarray);
+          // free(line);
+          // freeStory(story, *lineNum);
+          //  if (fclose(f) != 0) {
+          // perror("could not close the file!");
+          // }
           exit(EXIT_FAILURE);
         }
         // Retrieve the word used at the specified index.
