@@ -5,6 +5,8 @@ story-step1 wrongstory3.txt
 story-step2 words.txt
 story-step2 mytrickywords.txt
 story-step2 mytrickywords2.txt
+story-step2 mytrickywords3.txt
+story-step2 mytrickywords4.txt
 story-step3 words.txt story2.txt
 story-step3 words.txt story.txt
 stoty-step3 words.txt trickystory.txt
