@@ -1,6 +1,6 @@
-Grading at 11/06/2023:21:39:37.490146
-For commit ID 01d7c9d58133012cdf6e3609297ed6d6f4e51a26
-Grading at Mon Nov  6 04:39:32 PM EST 2023
+Grading at 11/06/2023:21:56:22.884499
+For commit ID 745069bb87467bd080abe6a912d752511ecaac79
+Grading at Mon Nov  6 04:56:17 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -45,7 +45,7 @@ Valgrind was clean
 2.2: Current test is story-step2 mytrickywords.txt
 -----------------------------
 You considered this a failure case:
-timeout: the monitored command dumped core
+the catogory word is in a wrong format!: Success
 But we did not.
 
 Step 3
