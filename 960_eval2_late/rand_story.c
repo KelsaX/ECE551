@@ -292,23 +292,28 @@ int lookUpCat(const char * name, char * newWord, catarray_t * myCatarray) {
 void parseCat(char * line, catarray_t * myCatarray) {
   // Find the first occurrence of ':' which is used to separate the category name and words.
   char * dilimeter = strchr(line, ':');
-  // char * wordStart = dilimeter + 1;
+  char * wordStart = dilimeter + 1;
+  int lineLen = strlen(line);
+  char * lineEnd = line + lineLen - 1;
+  lineEnd[0] = '\0';
   if (dilimeter == NULL) {
     perror("there is no : in the line!");
     // If there is no ':' in the line, print an error message and exit.
     exit(EXIT_FAILURE);
   }
   // Use strtok to get the category name which is before the ':' delimiter.
-  char * newName = strtok(line, ":");
-  //  dilimeter = '\0';
-  //char * newName = line;
+  //char * newName = strtok(line, ":");
+  dilimeter[0] = '\0';
+  char * newName = line;
+  //char * newName = strdup(line);
   // Use strtok to get the following word(s), after the ':' delimiter and before the newline.
   if (strcmp(newName, ":") == 0) {
     perror("the catogory name is in a wrong format!");
     exit(EXIT_FAILURE);
   }
-  //char * newWord = wordStart;
-  char * newWord = strtok(NULL, "\n");
+  char * newWord = wordStart;
+  // char * newWord = strtok(NULL, "\n");
+
   if (strcmp(newWord, ":") == 0) {
     perror("the catogory word is in a wrong format!");
     exit(EXIT_FAILURE);
