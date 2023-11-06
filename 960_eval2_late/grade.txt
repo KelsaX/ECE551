@@ -1,6 +1,6 @@
-Grading at 11/06/2023:22:06:23.703822
-For commit ID 72b2c00a720ee7769c70c14615a8967278c7b2b4
-Grading at Mon Nov  6 05:06:18 PM EST 2023
+Grading at 11/06/2023:22:14:19.599575
+For commit ID 02fe58fd10c88bb2c2d6fd9b19b2a4e295da765b
+Grading at Mon Nov  6 05:14:14 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -44,9 +44,8 @@ Valgrind was clean
 
 2.2: Current test is story-step2 mytrickywords.txt
 -----------------------------
-You considered this a failure case:
-timeout: the monitored command dumped core
-But we did not.
+Your output looks good. Lets check valgrind
+Valgrind was clean
 
 Step 3
 Checking that story-step3 compiles
@@ -85,8 +84,8 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
-You have NOT passed your test cases!
-You should go and figure out/understand where thing went wrong
-And fix the problem(s) before the deadline
+You have passed the test cases YOU provided
+If your tests are good, this is great. 
+If your tests are insufficient, you should do much more testing
 
 Overall Grade: NO GRADE YET
