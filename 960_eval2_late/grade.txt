@@ -1,6 +1,6 @@
-Grading at 11/06/2023:22:37:11.474342
-For commit ID 63f83fc3aeb87b973104c0373536a695a79e03a2
-Grading at Mon Nov  6 05:37:05 PM EST 2023
+Grading at 11/06/2023:22:42:27.345253
+For commit ID b59565a21bc5a55a6749da2b6079dc6543b28cd0
+Grading at Mon Nov  6 05:42:21 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -31,7 +31,6 @@ Valgrind was clean
 -----------------------------
 You considered this a failure case:
 the index is out of range!: Success
-timeout: the monitored command dumped core
 But we did not.
 
 Step 2
