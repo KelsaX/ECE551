@@ -303,13 +303,13 @@ void parseCat(char * line, catarray_t * myCatarray) {
   //  dilimeter = '\0';
   //char * newName = line;
   // Use strtok to get the following word(s), after the ':' delimiter and before the newline.
-  if (newName == NULL || strcmp(newName, ":") == 0) {
+  if (strcmp(newName, ":") == 0) {
     perror("the catogory name is in a wrong format!");
     exit(EXIT_FAILURE);
   }
   //char * newWord = wordStart;
   char * newWord = strtok(NULL, "\n");
-  if (newWord == NULL || strcmp(newWord, ":") == 0) {
+  if (strcmp(newWord, ":") == 0) {
     perror("the catogory word is in a wrong format!");
     exit(EXIT_FAILURE);
   }
