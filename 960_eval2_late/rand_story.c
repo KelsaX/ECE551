@@ -144,6 +144,8 @@ char ** getNewStory(char * filename,
     // usedWords->words = NULL;
     // usedWords->n_words = 0;
     // usedWords->name = NULL;
+    story = realloc(story, ((*lineNum) + 1) * sizeof(*story));
+    story[*lineNum] = NULL;
     while ((first_dilimeter = strchr(line, '_')) != NULL) {
       // Flag for whether the replace_word should be freed.
       int freeWord = 0;
@@ -168,8 +170,8 @@ char ** getNewStory(char * filename,
       // }
 
       // Reallocate memory for the story array to hold one more line.
-      story = realloc(story, ((*lineNum) + 1) * sizeof(*story));
-      story[*lineNum] = NULL;
+      // story = realloc(story, ((*lineNum) + 1) * sizeof(*story));
+      // story[*lineNum] = NULL;
       // If the category name is an integer, use it to index into the used words.
       if (isPositiveInteger(category_name)) {
         size_t index = atoi(category_name);
@@ -237,6 +239,7 @@ char ** getNewStory(char * filename,
     //    free(category_name);
     // story = realloc(story, ((*lineNum) + 1) * sizeof(*story));
     //story[*lineNum] = malloc((lineLen + 1) * sizeof(char));
+
     story[*lineNum] = strdup(line);
     //strcpy(story[*lineNum], line);
     (*lineNum)++;

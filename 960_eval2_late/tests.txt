@@ -1,5 +1,5 @@
 story-step1 story.txt
-story-step1 step1_test1.txt
+story-step1 wrongstory.txt
 story-step2 words.txt
 story-step2 mytrickywords.txt
 story-step3 words.txt story2.txt
