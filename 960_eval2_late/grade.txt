@@ -1,6 +1,6 @@
-Grading at 11/06/2023:20:55:57.437575
-For commit ID b1125c9b6954d1119b68026d5147c54c2f28569a
-Grading at Mon Nov  6 03:55:53 PM EST 2023
+Grading at 11/06/2023:21:19:44.105997
+For commit ID c3e4a7072afb74178d276b8a92909dba9a9545c8
+Grading at Mon Nov  6 04:19:39 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -17,6 +17,11 @@ Your file matched the expected output
 Now running YOUR tests for step 1
 
 1.1: Current test is story-step1 story.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+1.2: Current test is story-step1 step1_test1.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
