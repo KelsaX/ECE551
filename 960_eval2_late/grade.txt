@@ -1,6 +1,6 @@
-Grading at 11/07/2023:00:04:14.820834
-For commit ID 366d8fc878649584ed5e6c6649806b89ea8fdf96
-Grading at Mon Nov  6 07:04:04 PM EST 2023
+Grading at 11/07/2023:00:06:16.931991
+For commit ID d64791fd6a746bf6b72c67f69b57aadf06d85914
+Grading at Mon Nov  6 07:06:05 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -36,6 +36,16 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
+Valgrind was clean
+
+1.5: Current test is story-step1 wrongstory4.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+1.6: Current test is story-step1 wrongstory5.txt
+-----------------------------
+Your output looks good. Lets check valgrind
 Valgrind was clean
 
 Step 2
