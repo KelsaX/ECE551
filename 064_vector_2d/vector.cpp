@@ -22,3 +22,6 @@ Vector2D & Vector2D::operator+=(const Vector2D & rhs) {
 double Vector2D::dot(const Vector2D & rhs) const {
   return x * rhs.x + y * rhs.y;
 }
+void Vector2D::print() const {
+  printf("%.2f,%.2f", x, y);
+}
