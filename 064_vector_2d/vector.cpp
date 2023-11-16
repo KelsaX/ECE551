@@ -6,8 +6,8 @@
 /* write your class implementation in this file
  */
 void Vector2D::initVector(double init_x, double init_y) {
-  init_x = 0;
-  init_y = 0;
+  x = init_x;
+  y = init_y;
 }
 
 double Vector2D::getMagnitude() const {
