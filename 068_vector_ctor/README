@@ -1,4 +1,4 @@
-In this short assignment, you will add constructors to the Vector2D class
+[In this short assignment, you will add constructors to the Vector2D class
 you previously defined. 
 
 Your only task is to modify your class in vector.hpp and vector.cpp to have
