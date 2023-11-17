@@ -1,8 +1,15 @@
-Grading at 11/17/2023:20:04:00.816596
-For commit ID 0d69d2777b97dd53c7d41f5897ecf41806f033a8
-Grading at Fri Nov 17 03:04:00 PM EST 2023
+Grading at 11/17/2023:20:29:41.516894
+For commit ID 86493b9b7949e8be89937c8decb2504175a4fd57
+Grading at Fri Nov 17 03:29:41 PM EST 2023
 Attempting to compile:
-make: 'myCode' is up to date.
-Your Makefile did not produce a binary called 'code'.   Please correct that
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c code.cpp
+g++ -o code code.o
+Your Makefile produced a binary called 'code'
+Line_7_did_not_match
+Line_8_did_not_match
+Line_9_did_not_match
+Line_10_did_not_match
+Your file did not match the expected output
+Your output did not match what we expected.
 
 Overall Grade: FAILED
