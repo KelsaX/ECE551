@@ -1,7 +1,8 @@
-Grading at 11/17/2023:18:57:23.562751
-For commit ID e0b4eecfaac16b619cd1328df640f7e33d2b96aa
-Grading at Fri Nov 17 01:57:23 PM EST 2023
+Grading at 11/17/2023:20:04:00.816596
+For commit ID 0d69d2777b97dd53c7d41f5897ecf41806f033a8
+Grading at Fri Nov 17 03:04:00 PM EST 2023
 Attempting to compile:
-You do not have a Makefile
+make: 'myCode' is up to date.
+Your Makefile did not produce a binary called 'code'.   Please correct that
 
 Overall Grade: FAILED
