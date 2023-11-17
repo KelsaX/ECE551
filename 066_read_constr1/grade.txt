@@ -1,15 +1,11 @@
-Grading at 11/17/2023:20:32:22.068008
-For commit ID d5537edf499fa4d6f78b6b993a75f95ce96bb5dd
-Grading at Fri Nov 17 03:32:21 PM EST 2023
+Grading at 11/17/2023:20:33:32.562341
+For commit ID a588d64c737d4e7798370990832ba5efb7b5a87e
+Grading at Fri Nov 17 03:33:32 PM EST 2023
 Attempting to compile:
 g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c code.cpp
 g++ -o code code.o
 Your Makefile produced a binary called 'code'
-Line_12_did_not_match
-Line_13_did_not_match
-Line_14_did_not_match
-Line_15_did_not_match
-Your file did not match the expected output
-Your output did not match what we expected.
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED
