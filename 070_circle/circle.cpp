@@ -1,0 +1,39 @@
+#include "circle.hpp"
+
+#include <cmath>
+#include <cstdio>
+
+Circle::Circle(const Point & center, const double radius) :
+    center(center), radius(radius) {
+}
+void Circle::move(double dx, double dy) {
+  center.move(dx, dy);
+}
+double Circle::intersectionArea(const Circle & otherCircle) {
+  double distance = center.distanceFrom(otherCircle.center);
+  if (distance >= radius + otherCircle.radius) {
+    return 0;
+  }
+  if (distance <= fabs(radius - otherCircle.radius)) {
+    if (radius <= otherCircle.radius) {
+      return M_PI * radius * radius;
+    }
+    else {
+      return M_PI * otherCircle.radius * otherCircle.radius;
+    }
+  }
+
+  double part1 = radius * radius *
+                 acos((radius * radius + distance * distance -
+                       otherCircle.radius * otherCircle.radius) /
+                      (2 * radius * distance));
+  double part2 = otherCircle.radius * otherCircle.radius *
+                 acos((otherCircle.radius * otherCircle.radius + distance * distance -
+                       radius * radius) /
+                      (2 * otherCircle.radius * distance));
+  double part3 = 0.5 * sqrt((-distance + radius + otherCircle.radius) *
+                            (distance + radius - otherCircle.radius) *
+                            (distance - radius + otherCircle.radius) *
+                            (distance + radius + otherCircle.radius));
+  return part1 + part2 - part3;
+}
