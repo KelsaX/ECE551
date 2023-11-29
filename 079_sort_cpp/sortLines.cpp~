@@ -1,0 +1,31 @@
+#include <iostream>
+//sort() is included in algorithm
+#include <algorithm>
+#include <fstream>
+#include <string>  //getline and string
+#include <vector>
+//vector用来存储读取到的string所以vector是一个string类型的
+
+int main(int argc, char ** argv) {
+  std::vector<std::string> lines;
+  std::string line;
+
+  if (argc == 1) {
+    while (std::getline(std::cin, line)) {
+      lines.push_back(line);
+    }
+  }
+  else if (argc > 1) {
+    for (int i = 1; i < argc; i++) {
+      std::ifstream file(argv[i]);
+      if (!file) {
+        std::cout << "could not open the file:" << argv[i] << std::endl;
+      }
+      while (std::getline(file, line)) {
+        lines.push_back(line);
+      }
+    }
+  }
+
+  return (EXIT_SUCCESS);
+}
