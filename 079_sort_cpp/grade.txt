@@ -1,6 +1,6 @@
-Grading at 11/29/2023:04:04:26.660335
-For commit ID 2dac4fc15949b5b8307a7ecdd417783dff508811
-Grading at Tue Nov 28 11:04:21 PM EST 2023
+Grading at 11/29/2023:04:07:13.256385
+For commit ID 75ff2e4d53ab22104d38906fde261df8bb1653dd
+Grading at Tue Nov 28 11:07:06 PM EST 2023
 Looking for malloc in your files
 No uses found (good).
 Looking for free in your files
@@ -14,11 +14,12 @@ No uses found (good).
 Looking for printf in your files
 No uses found (good).
 Attempting to compile with make
-make: 'sortLines' is up to date.
+g++ -Wall -Werror -std=gnu++98 -pedantic -ggdb3 -o sortLines sortLines.cpp
 Using sortLines..
 #################################################
 testcase1:
-testcase1 failed, your program didn't indicate this is a failure case
+testcase1 passed, your program successfully indicated a failure
+valgrind was clean
 #################################################
 testcase2:
 Your output is correct
@@ -32,4 +33,4 @@ testcase4:
 Your output is correct
 valgrind was clean
 
-Overall Grade: B
+Overall Grade: A
