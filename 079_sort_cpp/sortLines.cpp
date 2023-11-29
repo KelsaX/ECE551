@@ -26,7 +26,8 @@ int main(int argc, char ** argv) {
       std::string line;
       std::ifstream file(argv[i]);
       if (!file) {
-        std::cout << "could not open the file:" << argv[i] << std::endl;
+        std::cerr << "could not open the file:" << argv[i] << std::endl;
+        return (EXIT_FAILURE);
       }
       while (std::getline(file, line)) {
         lines.push_back(line);
