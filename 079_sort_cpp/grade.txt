@@ -1,6 +1,6 @@
-Grading at 11/29/2023:04:00:11.188860
-For commit ID d619c7929bee47ce9e6528c8ce7a134cfb4b01df
-Grading at Tue Nov 28 11:00:11 PM EST 2023
+Grading at 11/29/2023:04:04:26.660335
+For commit ID 2dac4fc15949b5b8307a7ecdd417783dff508811
+Grading at Tue Nov 28 11:04:21 PM EST 2023
 Looking for malloc in your files
 No uses found (good).
 Looking for free in your files
@@ -14,6 +14,22 @@ No uses found (good).
 Looking for printf in your files
 No uses found (good).
 Attempting to compile with make
-The code did not compile!
+make: 'sortLines' is up to date.
+Using sortLines..
+#################################################
+testcase1:
+testcase1 failed, your program didn't indicate this is a failure case
+#################################################
+testcase2:
+Your output is correct
+valgrind was clean
+#################################################
+testcase3:
+Your output is correct
+valgrind was clean
+#################################################
+testcase4:
+Your output is correct
+valgrind was clean
 
-Overall Grade: F
+Overall Grade: B
