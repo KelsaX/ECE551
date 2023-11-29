@@ -1,0 +1,12 @@
+#ifndef _EXPR_HPP_
+#define _EXPR_HPP_
+#include <sstream>
+#include <string>
+
+class Expression {
+  Expression() {}
+  virtual std::string toString() const = 0;
+  virtual ~Expression() {}
+};
+
+#endif
