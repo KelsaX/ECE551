@@ -58,6 +58,8 @@ class Matrix {
       // rows = temp;
       // }
       rows = rhs.rows;
+      numColumns = rhs.numColumns;
+      numRows = rhs.numRows;
     }
     return *this;
   }
