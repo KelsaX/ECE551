@@ -1,0 +1,46 @@
+Grading at 11/29/2023:07:47:09.827067
+For commit ID ca9aadd7bd40f49c9fd47aa40d269366564324a0
+Grading at Wed Nov 29 02:47:02 AM EST 2023
+-----------------------------------------------
+testcase 1 : Testing with Matrix<int>
+...compiling...
+The code compiled.
+Line_29_did_not_match
+Your file did not match the expected output
+Testcase failed 
+-----------------------------------------------
+testcase 2 : Testing with Matrix<std::string>
+...compiling...
+The code compiled.
+Line_29_did_not_match
+Your file did not match the expected output
+Testcase failed 
+-----------------------------------------------
+testcase 3 : Testing with Matrix<(a custom class we wrote)>
+...compiling...
+The code compiled.
+Line_29_did_not_match
+Your file did not match the expected output
+Testcase failed 
+--------------------------------------------
+Preparing to test assert fails...
+Compiling assertion failure tester...
+Compiled.
+-----------------------------------------------
+testcase 4 :  operator[]: row number too high
+Your file matched the expected output
+Testcase passed
+-----------------------------------------------
+testcase 5 :  operator[]: row number too low
+Your file matched the expected output
+Testcase passed
+-----------------------------------------------
+testcase 6 :  operator+: different number of rows
+Your file matched the expected output
+Testcase passed
+-----------------------------------------------
+testcase 7 :  operator+: different number of columns
+Your file matched the expected output
+Testcase passed
+
+Overall Grade: F
