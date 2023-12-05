@@ -49,6 +49,7 @@ class LinkedList {
     }
     size++;
   }
+
   bool remove(const T & item) {
     Node * current = head;
     while (current != NULL) {
@@ -87,6 +88,34 @@ class LinkedList {
     // delete current;
     return false;
   }
+  /*
+  bool remove(const T & item) {
+    Node * traverse = head;
+    while (traverse != NULL && traverse->data != item) {
+      traverse = traverse->next;
+    }
+    if (traverse == NULL) {
+      return false;
+    }
+    Node * nextN = traverse->next;
+    Node * prevN = traverse->prev;
+    if (nextN != NULL) {
+      nextN->prev = prevN;
+    }
+    else {
+      tail = prevN;
+    }
+    if (prevN != NULL) {
+      prevN->next = nextN;
+    }
+    else {
+      head = nextN;
+    }
+    size -= 1;
+    delete traverse;
+    return true;
+  }
+  */
   T & operator[](int index) {
     if (index > size - 1 || index < 0) {
       throw std::out_of_range("the index is out of range!");
@@ -146,12 +175,21 @@ class LinkedList {
     }
     return *this;
   }
+  /*
   ~LinkedList() {
     Node * current = head;
     while (head != NULL) {
       current = current->next;
       delete head;
       head = current;
+    }
+  }
+  */
+  ~LinkedList() {
+    while (head != NULL) {
+      Node * temp = head->next;
+      delete head;
+      head = temp;
     }
   }
   int getSize() const { return size; }
