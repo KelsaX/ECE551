@@ -90,30 +90,20 @@ class LinkedList {
   }
   /*
   bool remove(const T & item) {
-    Node * traverse = head;
-    while (traverse != NULL && traverse->data != item) {
-      traverse = traverse->next;
-    }
-    if (traverse == NULL) {
-      return false;
-    }
-    Node * nextN = traverse->next;
-    Node * prevN = traverse->prev;
-    if (nextN != NULL) {
-      nextN->prev = prevN;
-    }
-    else {
-      tail = prevN;
-    }
-    if (prevN != NULL) {
-      prevN->next = nextN;
-    }
-    else {
-      head = nextN;
-    }
-    size -= 1;
-    delete traverse;
-    return true;
+    Node* current=head;
+while(current!=NULL){
+if(item==current->data){
+if(current->next!=NULL){current->next->prev=current->prev;}
+if(current->prev!=NULL){current->prev->next=current->next;}
+if(current==head){head=current->next;}
+if(current==tail){tail=current->prev;}
+delete current;
+return true;
+}
+current=current->next;
+}
+return false;
+
   }
   */
   T & operator[](int index) {
@@ -172,10 +162,12 @@ class LinkedList {
       tail = temp->tail;
       temp->tail = tmptail;
       size = temp->size;
+      delete temp;
     }
+
     return *this;
   }
-  /*
+
   ~LinkedList() {
     Node * current = head;
     while (head != NULL) {
@@ -184,14 +176,7 @@ class LinkedList {
       head = current;
     }
   }
-  */
-  ~LinkedList() {
-    while (head != NULL) {
-      Node * temp = head->next;
-      delete head;
-      head = temp;
-    }
-  }
+
   int getSize() const { return size; }
   friend class Tester;
 };
