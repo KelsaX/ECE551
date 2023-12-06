@@ -134,7 +134,7 @@ For the first part of this assignment, you should make the following:
   - Appropriate C++ classes to represent the story.   Note
     you should have at least two classes, and should make good
     use of C++'s STL.
-
+/usr/local/ece551/cyoa/story1
   - A program cyoa-step1 that takes the name of a directory containing
     a story.txt file.  Your program should print the pages in the story,
     and (except for error checking) do nothing else.
@@ -220,7 +220,7 @@ or
 Note that Step 4 adds two new line types to the input file.  While
 you are not expected to handle these in Step 1, you do not need to
 treat them as errors (so you can reuse the code in Step 4 most
-easily), but you can for now if that is easier.
+yyeasily), but you can for now if that is easier.
 We will not test Step 1, 2, or 3 with input lines of the format added in Step 4. 
 
 Hint: You should write cyoa-step1.cpp with *as little* code in it as
