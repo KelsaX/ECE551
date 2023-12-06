@@ -1,6 +1,6 @@
-Grading at 12/06/2023:23:14:30.471130
-For commit ID 705aeb51807aa032b4199d34b64b21e553efd8f8
-Grading at Wed Dec  6 06:14:25 PM EST 2023
+Grading at 12/06/2023:23:33:26.724650
+For commit ID 592d1a51ff2c609603735b40beab4c270298820f
+Grading at Wed Dec  6 06:33:20 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -47,8 +47,12 @@ Valgrind was clean
 
 1.5: Current test is ./cyoa-step1 step1error3 < /dev/null
 -----------------------------
-We considered this a failure case.
-But you did not (exit status was EXIT_SUCCESS).
+Great: we both considered this an error
+----here is what you printed on stderr---
+Error: the page number is not valid!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
 No request to check for intermediate deadline completion on step 1
 
 Step 2
