@@ -25,6 +25,7 @@ class Story {
   void addChoiceToPage(int pageNum, int destPageNum, const std::string & choiceText);
   void parsePageDeclaration(const std::string & line, const std::string & directory);
   void parseChoiceLine(const std::string & line);
+  bool isValidNumber(const std::string & str);
 };
 
 std::string Story::intToString(int num) {
@@ -53,7 +54,13 @@ void Story::addChoiceToPage(int pageNum,
   }
   pages[pageNum].addChoice(choiceText);
 }
-
+bool Story::isValidNumber(const std::string & str) {
+  const char * cstr = str.c_str();
+  char * endptr;
+  strtol(cstr, &endptr, 10);  // 使用strtol尝试将字符串转换为整数
+  // 检查转换后的endptr是否指向字符串的末尾，如果是，则整个字符串是有效数字
+  return (endptr != NULL && *endptr == '\0');
+}
 void Story::parsePageDeclaration(const std::string & line,
                                  const std::string & directory) {
   std::vector<std::string> tokens;
@@ -66,6 +73,11 @@ void Story::parsePageDeclaration(const std::string & line,
 
   if (tokens.size() >= 2) {
     std::string pageNumStr = tokens[0];
+    if (!isValidNumber(pageNumStr)) {
+      std::ostringstream errorStr;
+      errorStr << "the page number is not valid!";
+      throw std::runtime_error(errorStr.str());
+    }
     std::string typeAndFileName = tokens[1];
     std::vector<std::string> typeAndFileNameTokens;
     std::istringstream typeAndFileNameStream(typeAndFileName);
