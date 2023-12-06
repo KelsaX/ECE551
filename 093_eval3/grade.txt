@@ -1,11 +1,11 @@
-Grading at 12/06/2023:23:05:45.111136
-For commit ID 43c360f9afbf5deafb5f4a282d769267706ea7e0
-Grading at Wed Dec  6 06:05:41 PM EST 2023
+Grading at 12/06/2023:23:14:30.471130
+For commit ID 705aeb51807aa032b4199d34b64b21e553efd8f8
+Grading at Wed Dec  6 06:14:25 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
-make: 'cyoa-step1' is up to date.
+g++ -o cyoa-step1 -Wall -Werror -std=gnu++98 cyoa-step1.cpp
 The code compiled (good)
 Executable cyoa-step1 exists (good)
 ------------------------------------
@@ -29,10 +29,26 @@ Valgrind was clean
 -----------------------------
 Great: we both considered this an error
 ----here is what you printed on stderr---
-Error: the pageNUM is wrong!
+Error: the page type is wrong!
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
+
+
+1.4: Current test is ./cyoa-step1 step1error2 < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Error: 选择对应的页面未声明: Page 0
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.5: Current test is ./cyoa-step1 step1error3 < /dev/null
+-----------------------------
+We considered this a failure case.
+But you did not (exit status was EXIT_SUCCESS).
 No request to check for intermediate deadline completion on step 1
 
 Step 2
