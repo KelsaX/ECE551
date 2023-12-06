@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -40,6 +41,11 @@ void Page::display(int pageNum) const {
   }
   else if (type == L) {
     std::cout << "Sorry, you have lost. Better luck next time!";
+  }
+  else {
+    std::ostringstream errorStr;
+    errorStr << "the pageNUM is wrong!";
+    throw std::runtime_error(errorStr.str());
   }
   std::cout << "\n";
 }
