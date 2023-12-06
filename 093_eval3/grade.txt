@@ -1,6 +1,6 @@
-Grading at 12/06/2023:22:35:08.568624
-For commit ID 14d5e50ebc5e7ea94413646c6f917a1647baff16
-Grading at Wed Dec  6 05:35:07 PM EST 2023
+Grading at 12/06/2023:22:38:50.321610
+For commit ID c32e16160779e686dc27c8b0b48da099720c6959
+Grading at Wed Dec  6 05:38:48 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -11,6 +11,16 @@ Executable cyoa-step1 exists (good)
 ------------------------------------
 Now running YOUR tests for step 1
 ------------------------------------
+
+
+1.1: Current test is ./cyoa-step1 story1 < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Error: 无法打开文件: story1/story.txt
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
 No request to check for intermediate deadline completion on step 1
 
 Step 2
