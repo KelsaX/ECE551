@@ -137,8 +137,23 @@ void Story::parseChoiceLine(const std::string & line) {
   }
 
   if (tokens.size() == 3) {
+    std::string pageNumStr = tokens[0];
+    std::string destPageNumStr = tokens[1];
+    if (!isValidNumber(pageNumStr)) {
+      std::ostringstream errorStr;
+      errorStr << "the page Num in the choice line is not valid!";
+      throw std::runtime_error(errorStr.str());
+    }
+    if (!isValidNumber(destPageNumStr)) {
+      std::ostringstream errorStr;
+      errorStr << "the destpage num is not valid in choice line!";
+      throw std::runtime_error(errorStr.str());
+    }
+
     int pageNum = std::atoi(tokens[0].c_str());
+
     int destPageNum = std::atoi(tokens[1].c_str());
+
     std::string choiceText = tokens[2];
 
     addChoiceToPage(pageNum, destPageNum, choiceText);

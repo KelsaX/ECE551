@@ -44,7 +44,7 @@ void Page::display(int pageNum) const {
   }
   else {
     std::ostringstream errorStr;
-    errorStr << "the pageNUM is wrong!";
+    errorStr << "the page type is wrong in page.h!";
     throw std::runtime_error(errorStr.str());
   }
   std::cout << "\n";
