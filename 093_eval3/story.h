@@ -85,11 +85,16 @@ void Story::parsePageDeclaration(const std::string & line,
       if (typeChar == 'N') {
         typeNum = 0;
       }
-      if (typeChar == 'W') {
+      else if (typeChar == 'W') {
         typeNum = 1;
       }
-      if (typeChar == 'L') {
+      else if (typeChar == 'L') {
         typeNum = 2;
+      }
+      else {
+        std::ostringstream errorStr;
+        errorStr << "the page type is wrong!";
+        throw std::runtime_error(errorStr.str());
       }
       pages[pageNum].setType(static_cast<Page::Type>(typeNum));
 
