@@ -1,6 +1,6 @@
-Grading at 12/06/2023:23:33:26.724650
-For commit ID 592d1a51ff2c609603735b40beab4c270298820f
-Grading at Wed Dec  6 06:33:20 PM EST 2023
+Grading at 12/06/2023:23:50:15.891692
+For commit ID dcb6b37d995c1626f1793eff01b148eaa77b71bc
+Grading at Wed Dec  6 06:50:07 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -50,6 +50,36 @@ Valgrind was clean
 Great: we both considered this an error
 ----here is what you printed on stderr---
 Error: the page number is not valid!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.6: Current test is ./cyoa-step1 step1error4 < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Error: the page type is wrong in page.h!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.7: Current test is ./cyoa-step1 step1error5 < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Error: the page Num in the choice line is not valid!
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+1.8: Current test is ./cyoa-step1 step1error6 < /dev/null
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Error: 页面声明顺序错误: 预期的页面编号是 10，但得到的是 11
 -----------------------------------------
 Lets check if it valgrinds:
 Valgrind was clean
