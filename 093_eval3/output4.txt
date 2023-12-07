@@ -10,7 +10,7 @@ What would you like to do?
  1. Purchase a chocolate croissant.
  2. Purchase an eclair.
  3. Purchase a muffin.
-You pay the baker, who puts your croissant into a bag,
+You pay the baker, who puts your muffin into a bag,
 and hands it to you.  He wishes you a good day.
 
 
@@ -41,17 +41,14 @@ What would you like to do?
 
  1. Offer the dragon your last coins.
  2. <UNAVAILABLE>
- 3. Offer the dragon the chocolate croissant.
+ 3. <UNAVAILABLE>
  4. <UNAVAILABLE>
- 5. <UNAVAILABLE>
+ 5. Throw the muffin at the dragon's nose and run for it!
  6. Ask the dragon if he has heard any good jokes lately.
-"Oh thank you this looks delicious!" the dragon says
-as he devours the pastry.   "I was so hungry I couldn't
-think straight and was about to eat you!  How terrible
-would that have been."
+That choice is not available at this time, please try again
+That choice is not available at this time, please try again
+As you throw the muffin at the dragon, it harmlessly bounces off
+his thick scales.  You wonder what you were thinking as the dragon
+eats you for breakfast.
 
-Having solved the dragon's hunger problems, he is happy
-to give you a ride back to your house.  Everyone lives
-happily ever after.
-
-Congratulations! You have won. Hooray!
+Sorry, you have lost. Better luck next time!

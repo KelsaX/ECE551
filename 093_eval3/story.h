@@ -172,8 +172,12 @@ void Story::storyStart() {
 
       if (choice >= 1 && choice <= pages[currentPageNum].getChoices().size() &&
           *end == '\0' &&
-          pages[currentPageNum].isChoiceAvailable(unvailableChoices, choice)) {
+          (pages[currentPageNum].isChoiceAvailable(unvailableChoices, choice))) {
         validChoice = true;
+      }
+      else if (!(pages[currentPageNum].isChoiceAvailable(unvailableChoices, choice))) {
+        std::cout << "That choice is not available at this time, please try again"
+                  << std::endl;
       }
       else {
         std::cout << "That is not a valid choice, please try again" << std::endl;
