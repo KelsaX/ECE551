@@ -186,8 +186,8 @@ void Story::storyStart() {
 void Story::validatePageDeclarationOrder(size_t pageNum) {
   if (pageNum != nextExpectedPageNum) {
     std::ostringstream errorStr;
-    errorStr << "页面声明顺序错误: 预期的页面编号是 " << nextExpectedPageNum
-             << "，但得到的是 " << pageNum;
+    errorStr << "Page declaration order error: Expected page number is "
+             << nextExpectedPageNum << ". But received: " << pageNum;
     throw std::runtime_error(errorStr.str());
   }
   nextExpectedPageNum++;
@@ -198,7 +198,7 @@ void Story::addChoiceToPage(size_t pageNum,
                             const std::string & choiceText) {
   if (declaredPages.find(pageNum) == declaredPages.end()) {
     std::ostringstream errorStr;
-    errorStr << "选择对应的页面未声明: Page " << pageNum;
+    errorStr << "The page corresponding to the choice is not declared: Page " << pageNum;
     throw std::runtime_error(errorStr.str());
   }
   pages[pageNum].addChoice(choiceText);
@@ -335,7 +335,7 @@ void Story::loadFromDirectory(const std::string & directory) {
   std::string storyFile = directory + "/story.txt";
   std::ifstream file(storyFile.c_str());
   if (!file.is_open()) {
-    throw std::runtime_error("无法打开文件: " + storyFile);
+    throw std::runtime_error("could not open the file: " + storyFile);
   }
 
   std::string line;
