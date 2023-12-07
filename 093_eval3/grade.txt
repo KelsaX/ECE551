@@ -1,6 +1,6 @@
-Grading at 12/07/2023:23:30:25.343586
-For commit ID e0d82d273bb67f7f05746c664b4f49a59d347d3c
-Grading at Thu Dec  7 06:28:50 PM EST 2023
+Grading at 12/07/2023:23:37:31.488192
+For commit ID 96fb43e0bbca40471d53e06ab74ba29e30eb4881
+Grading at Thu Dec  7 06:36:04 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -183,20 +183,10 @@ Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.15: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story2/inputs/input0.txt
+2.15: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input0.txt
 -----------------------------
-Great: we both considered this an error
-----here is what you printed on stderr---
-timeout: the monitored command dumped core
------------------------------------------
-Lets check if it valgrinds:
-Valgrind reported errors:
-==327818== Memcheck, a memory error detector
-==327818== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==327818== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==327818== Command: ./cyoa-step2 /usr/local/ece551/cyoa/story1
-==327818== Parent PID: 327817
-==327818== 
+Your output looks good. Lets check valgrind
+Valgrind was clean
 
 
 2.16: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input1.txt
@@ -567,8 +557,8 @@ Your output looks good. Lets check valgrind
 Valgrind was clean
 No request to check for intermediate deadline completion on step 4
 
-You have NOT passed your test cases!
-You should go and figure out/understand where thing went wrong
-And fix the problem(s) before the deadline
+You have passed the test cases YOU provided
+If your tests are good, this is great. 
+If your tests are insufficient, you should do much more testing
 
 Overall Grade: NO GRADE YET
