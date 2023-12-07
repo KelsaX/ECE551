@@ -6,3 +6,6 @@ cyoa-step1 step1error3
 cyoa-step1 step1error4
 cyoa-step1 step1error5
 cyoa-step1 step1error6
+cyoa-step2 /usr/local/ece551/cyoa/story1
+cyoa-step3 /usr/local/ece551/cyoa/story1
+cyoa-step4 /usr/local/ece551/cyoa/story3
