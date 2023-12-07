@@ -1,5 +1,3 @@
-
-
 #include <algorithm>
 #include <cstdlib>
 #include <fstream>
@@ -175,10 +173,6 @@ void Story::storyStart() {
           pages[currentPageNum].isChoiceAvailable(unvailableChoices, choice)) {
         validChoice = true;
       }
-      else if (!(pages[currentPageNum].isChoiceAvailable(unvailableChoices, choice))) {
-        std::cout << "That choice is not available at this time, please try again"
-                  << std::endl;
-      }
       else {
         std::cout << "That is not a valid choice, please try again" << std::endl;
       }
@@ -190,8 +184,8 @@ void Story::storyStart() {
 void Story::validatePageDeclarationOrder(size_t pageNum) {
   if (pageNum != nextExpectedPageNum) {
     std::ostringstream errorStr;
-    errorStr << "Page declaration order error: Expected page number is "
-             << nextExpectedPageNum << ". But received: " << pageNum;
+    errorStr << "页面声明顺序错误: 预期的页面编号是 " << nextExpectedPageNum
+             << "，但得到的是 " << pageNum;
     throw std::runtime_error(errorStr.str());
   }
   nextExpectedPageNum++;
@@ -202,7 +196,7 @@ void Story::addChoiceToPage(size_t pageNum,
                             const std::string & choiceText) {
   if (declaredPages.find(pageNum) == declaredPages.end()) {
     std::ostringstream errorStr;
-    errorStr << "The page corresponding to the choice is not declared: Page " << pageNum;
+    errorStr << "选择对应的页面未声明: Page " << pageNum;
     throw std::runtime_error(errorStr.str());
   }
   pages[pageNum].addChoice(choiceText);
@@ -277,7 +271,7 @@ void Story::parsePageDeclaration(const std::string & line,
       }
       else {
         std::ostringstream errorStr;
-        errorStr << "could not open the file: " << fileName;
+        errorStr << "无法打开文件: " << fileName;
         throw std::runtime_error(errorStr.str());
       }
 
@@ -339,7 +333,7 @@ void Story::loadFromDirectory(const std::string & directory) {
   std::string storyFile = directory + "/story.txt";
   std::ifstream file(storyFile.c_str());
   if (!file.is_open()) {
-    throw std::runtime_error("could not open the file: " + storyFile);
+    throw std::runtime_error("无法打开文件: " + storyFile);
   }
 
   std::string line;
@@ -352,9 +346,6 @@ void Story::loadFromDirectory(const std::string & directory) {
     }
     else if (line.find('$') != std::string::npos) {
       parseVariableAssignment(line);
-    }
-    else if (line.empty()) {
-      continue;
     }
     else {
       std::ostringstream errorStr;
