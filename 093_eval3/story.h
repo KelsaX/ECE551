@@ -1,3 +1,6 @@
+
+
+#include <algorithm>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -14,27 +17,173 @@ class Story {
 
   void loadFromDirectory(const std::string & directory);
   void display() const;
+  void storyStart();
+  void findWinningPaths();
 
  private:
-  std::map<int, Page> pages;
-  std::set<int> declaredPages;
-  int nextExpectedPageNum;
-
-  std::string intToString(int num);
-  void validatePageDeclarationOrder(int pageNum);
-  void addChoiceToPage(int pageNum, int destPageNum, const std::string & choiceText);
+  std::map<size_t, Page> pages;
+  std::set<size_t> declaredPages;
+  size_t nextExpectedPageNum;
+  std::map<std::string, int> variables;
+  // std::string intToString(int num);
+  void validatePageDeclarationOrder(size_t pageNum);
+  void addChoiceToPage(size_t pageNum,
+                       size_t destPageNum,
+                       const std::string & choiceText);
   void parsePageDeclaration(const std::string & line, const std::string & directory);
   void parseChoiceLine(const std::string & line);
-  bool isValidNumber(const std::string & str);
+  size_t isValidNumber(const std::string & str);
+  // void findWinningPaths();
+  void dfsFindPath(std::vector<std::pair<size_t, int> > & path,
+                   std::vector<std::vector<std::pair<size_t, int> > > & winningPaths,
+                   size_t currentPageNum,
+                   std::set<size_t> & visited);
+  void parseVariableAssignment(const std::string & line);
+  // bool isChoiceAvailable(int choice);
+  bool isConditionSatisfied(const std::string & condition);
 };
 
-std::string Story::intToString(int num) {
-  std::ostringstream ss;
-  ss << num;
-  return ss.str();
+//std::string Story::intToString(int num) {
+//  std::ostringstream ss;
+//  ss << num;
+//  return ss.str();
+//}
+//bool Story::isChoiceAvailable(int choice) {
+// return true;
+//}
+bool Story::isConditionSatisfied(const std::string & condition) {
+  size_t equalPos = condition.find('=');
+  if (equalPos == std::string::npos) {
+    throw std::runtime_error("Condition format error: " + condition);
+  }
+  std::string variableName = condition.substr(0, equalPos);
+  int expectedValue = isValidNumber(condition.substr(equalPos + 1));
+  std::map<std::string, int>::iterator it = variables.find(variableName);
+  if (it != variables.end()) {
+    return it->second == expectedValue;
+  }
+  return expectedValue == 0;
 }
 
-void Story::validatePageDeclarationOrder(int pageNum) {
+void Story::parseVariableAssignment(const std::string & line) {
+  std::istringstream lineStream(line);
+  std::string pageToSet;
+  std::getline(lineStream, pageToSet, '$');
+  std::string variableAssignment;
+  size_t pageNum = isValidNumber(pageToSet);
+  if (std::getline(lineStream, variableAssignment)) {
+    size_t equalPos = variableAssignment.find('=');
+    if (equalPos == std::string::npos) {
+      std::ostringstream errorStr;
+      errorStr << "the variable assignment is not valid";
+      throw std::runtime_error(errorStr.str());
+    }
+    std::string variableName = variableAssignment.substr(0, equalPos);
+    std::string valueStr = variableAssignment.substr(equalPos + 1);
+    int value = isValidNumber(valueStr);
+    // variable[variableName] = value;
+    pages[pageNum].addVariables(variableName, value);
+  }
+  else {
+    std::ostringstream errorStr;
+    errorStr << "the format of the variable assignment line is not valid";
+    throw std::runtime_error(errorStr.str());
+  }
+}
+void Story::findWinningPaths() {
+  std::vector<std::pair<size_t, int> > path;
+  std::vector<std::vector<std::pair<size_t, int> > > winningPaths;
+  std::set<size_t> visited;
+  dfsFindPath(path, winningPaths, 0, visited);
+  for (size_t i = 0; i < winningPaths.size(); ++i) {
+    for (size_t j = 0; j < winningPaths[i].size(); ++j) {
+      std::cout << winningPaths[i][j].first;
+      if (winningPaths[i][j].second != -1) {
+        std::cout << "(" << winningPaths[i][j].second << ")";
+      }
+      if (j < winningPaths[i].size() - 1) {
+        std::cout << ",";
+      }
+    }
+
+    std::cout << "(win)" << std::endl;
+  }
+}
+void Story::dfsFindPath(std::vector<std::pair<size_t, int> > & path,
+                        std::vector<std::vector<std::pair<size_t, int> > > & winningPaths,
+                        size_t currentPageNum,
+                        std::set<size_t> & visited) {
+  visited.insert(currentPageNum);
+  if (pages[currentPageNum].getType() == Page::W) {
+    path.push_back(std::make_pair(currentPageNum, -1));
+
+    winningPaths.push_back(path);
+    path.pop_back();
+  }
+  else if (pages[currentPageNum].getType() != Page::L) {
+    const std::vector<std::string> totalChoices = pages[currentPageNum].getChoices();
+    for (size_t i = 0; i < totalChoices.size(); ++i) {
+      size_t nextPage = pages[currentPageNum].getdestPageNum(i + 1);
+      // if (visited.find(nextPage) == visited.end(){})
+      if (std::find(visited.begin(), visited.end(), nextPage) == visited.end()) {
+        path.push_back(std::make_pair(currentPageNum, i + 1));
+        dfsFindPath(path, winningPaths, nextPage, visited);
+        path.pop_back();
+      }
+    }
+  }
+  visited.erase(currentPageNum);
+}
+void Story::storyStart() {
+  size_t currentPageNum = 0;
+  while (true) {
+    pages[currentPageNum].updateStoryVariables(variables);
+    std::map<int, std::string> currentConditions = pages[currentPageNum].getConditions();
+    // for (size_t i = 0; i < pages[currentPageNum].getChoices().size(); i++) {
+    //  isChoiceAvailabel(i + 1);
+    // }
+    std::vector<int> unvailableChoices;
+    std::map<int, std::string>::const_iterator it;
+    for (it = currentConditions.begin(); it != currentConditions.end(); ++it) {
+      if (!isConditionSatisfied(it->second)) {
+        unvailableChoices.push_back(it->first);
+      }
+    }
+
+    pages[currentPageNum].display(unvailableChoices);
+    if (pages[currentPageNum].getType() == Page::W ||
+        pages[currentPageNum].getType() == Page::L) {
+      break;
+    }
+    size_t choice;
+    std::string userInput;
+    bool validChoice = false;
+
+    while (!validChoice) {
+      //std::cout<<"Enter your choice: ";
+      std::cin >> userInput;
+
+      char * end;
+      choice = std::strtoul(userInput.c_str(), &end, 10);
+
+      //catch (const std::invalid_argument & e) {
+      // std::cerr << "That is not a valid choice, please try again" << std::endl;
+      // }
+
+      if (choice >= 1 && choice <= pages[currentPageNum].getChoices().size() &&
+          *end == '\0' &&
+          pages[currentPageNum].isChoiceAvailable(unvailableChoices, choice)) {
+        validChoice = true;
+      }
+      else {
+        std::cout << "That is not a valid choice, please try again" << std::endl;
+      }
+    }
+
+    currentPageNum = pages[currentPageNum].getdestPageNum(choice);
+  }
+}
+void Story::validatePageDeclarationOrder(size_t pageNum) {
   if (pageNum != nextExpectedPageNum) {
     std::ostringstream errorStr;
     errorStr << "页面声明顺序错误: 预期的页面编号是 " << nextExpectedPageNum
@@ -44,8 +193,8 @@ void Story::validatePageDeclarationOrder(int pageNum) {
   nextExpectedPageNum++;
 }
 
-void Story::addChoiceToPage(int pageNum,
-                            int destPageNum,
+void Story::addChoiceToPage(size_t pageNum,
+                            size_t destPageNum,
                             const std::string & choiceText) {
   if (declaredPages.find(pageNum) == declaredPages.end()) {
     std::ostringstream errorStr;
@@ -53,13 +202,18 @@ void Story::addChoiceToPage(int pageNum,
     throw std::runtime_error(errorStr.str());
   }
   pages[pageNum].addChoice(choiceText);
+  pages[pageNum].adddestPages(destPageNum);
 }
-bool Story::isValidNumber(const std::string & str) {
+size_t Story::isValidNumber(const std::string & str) {
   const char * cstr = str.c_str();
   char * endptr;
-  strtol(cstr, &endptr, 10);  // 使用strtol尝试将字符串转换为整数
-  // 检查转换后的endptr是否指向字符串的末尾，如果是，则整个字符串是有效数字
-  return (endptr != NULL && *endptr == '\0');
+  size_t ans = strtoul(cstr, &endptr, 10);
+  if (*endptr != '\0' || endptr == NULL) {
+    std::ostringstream errorStr;
+    errorStr << "the pageNUM is not valid in declaration line!";
+    throw std::runtime_error(errorStr.str());
+  }
+  return ans;
 }
 void Story::parsePageDeclaration(const std::string & line,
                                  const std::string & directory) {
@@ -73,11 +227,11 @@ void Story::parsePageDeclaration(const std::string & line,
 
   if (tokens.size() >= 2) {
     std::string pageNumStr = tokens[0];
-    if (!isValidNumber(pageNumStr)) {
-      std::ostringstream errorStr;
-      errorStr << "the page number is not valid!";
-      throw std::runtime_error(errorStr.str());
-    }
+    // if (!isValidNumber(pageNumStr)) {
+    //  std::ostringstream errorStr;
+    //  errorStr << "the page number is not valid!";
+    //  throw std::runtime_error(errorStr.str());
+    // }
     std::string typeAndFileName = tokens[1];
     std::vector<std::string> typeAndFileNameTokens;
     std::istringstream typeAndFileNameStream(typeAndFileName);
@@ -86,21 +240,21 @@ void Story::parsePageDeclaration(const std::string & line,
     }
 
     if (typeAndFileNameTokens.size() == 2) {
-      char typeChar = typeAndFileNameTokens[0][0];
+      std::string typeChar = typeAndFileNameTokens[0];
 
       std::string fileName = typeAndFileNameTokens[1];
-
-      int pageNum = std::atoi(pageNumStr.c_str());
+      //char* endptr;
+      size_t pageNum = isValidNumber(pageNumStr);
       validatePageDeclarationOrder(pageNum);
 
       int typeNum = -1;
-      if (typeChar == 'N') {
+      if (typeChar == "N") {
         typeNum = 0;
       }
-      else if (typeChar == 'W') {
+      else if (typeChar == "W") {
         typeNum = 1;
       }
-      else if (typeChar == 'L') {
+      else if (typeChar == "L") {
         typeNum = 2;
       }
       else {
@@ -137,22 +291,39 @@ void Story::parseChoiceLine(const std::string & line) {
   }
 
   if (tokens.size() == 3) {
-    std::string pageNumStr = tokens[0];
+    std::string pageNumandConditionStr = tokens[0];
     std::string destPageNumStr = tokens[1];
-    if (!isValidNumber(pageNumStr)) {
-      std::ostringstream errorStr;
-      errorStr << "the page Num in the choice line is not valid!";
-      throw std::runtime_error(errorStr.str());
+
+    size_t frontPos = pageNumandConditionStr.find('[');
+    std::string pageNumStr;
+    size_t pageNum = 0;
+    if (frontPos != std::string::npos) {
+      size_t endPos = pageNumandConditionStr.find(']', frontPos);
+      pageNumStr = pageNumandConditionStr.substr(0, frontPos);
+      pageNum = isValidNumber(pageNumStr);
+      std::string condition =
+          pageNumandConditionStr.substr(frontPos + 1, endPos - frontPos - 1);
+      pages[pageNum].addConditions(condition, pages[pageNum].getChoices().size() + 1);
     }
-    if (!isValidNumber(destPageNumStr)) {
-      std::ostringstream errorStr;
-      errorStr << "the destpage num is not valid in choice line!";
-      throw std::runtime_error(errorStr.str());
+    else {
+      pageNum = isValidNumber(pageNumandConditionStr);
     }
 
-    int pageNum = std::atoi(tokens[0].c_str());
+    // if (!isValidNumber(pageNumStr)) {
+    //  std::ostringstream errorStr;
+    //  errorStr << "the page Num in the choice line is not valid!";
+    //  throw std::runtime_error(errorStr.str());
+    // }
+    // size_t pageNum = isValidNumber(pageNumStr);
+    //  if (!isValidNumber(destPageNumStr)) {
+    //  std::ostringstream errorStr;
+    //  errorStr << "the destpage num is not valid in choice line!";
+    //  throw std::runtime_error(errorStr.str());
+    // }
 
-    int destPageNum = std::atoi(tokens[1].c_str());
+    // int pageNum = std::atoi(tokens[0].c_str());
+
+    int destPageNum = isValidNumber(destPageNumStr);
 
     std::string choiceText = tokens[2];
 
@@ -175,6 +346,14 @@ void Story::loadFromDirectory(const std::string & directory) {
     else if (line.find(':') != std::string::npos) {
       parseChoiceLine(line);
     }
+    else if (line.find('$') != std::string::npos) {
+      parseVariableAssignment(line);
+    }
+    else {
+      std::ostringstream errorStr;
+      errorStr << "the format of this line is wrong: " << line;
+      throw std::runtime_error(errorStr.str());
+    }
   }
 }
 /*
@@ -188,9 +367,12 @@ void Story::display() const {
 */
 
 void Story::display() const {
-  for (std::map<int, Page>::const_iterator it = pages.begin(); it != pages.end(); ++it) {
+  for (std::map<size_t, Page>::const_iterator it = pages.begin(); it != pages.end();
+       ++it) {
     int pageNum = it->first;
     const Page & page = it->second;
-    page.display(pageNum);
+    std::cout << "Page " << pageNum << "\n==========\n";
+
+    page.display(std::vector<int>());
   }
 }

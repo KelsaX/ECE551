@@ -1,0 +1,7 @@
+#include "story.h"
+int main(int argc, char ** argv) {
+  if (argc != 2) {
+    std::cerr << "the number of the program arguments should be 2!\n";
+    return (EXIT_FAILURE);
+  }
+}
