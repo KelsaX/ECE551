@@ -1,9 +1,8 @@
-
-
 #include <algorithm>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <map>
 #include <set>
 #include <sstream>
@@ -180,6 +179,8 @@ void Story::storyStart() {
                   << std::endl;
       }
       else {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "That is not a valid choice, please try again" << std::endl;
       }
     }
