@@ -1,6 +1,6 @@
-Grading at 12/08/2023:19:36:52.716792
-For commit ID bcc6d9cd90a4eac4d923e5646b82f85f88bc0dfc
-Grading at Fri Dec  8 02:35:25 PM EST 2023
+Grading at 12/08/2023:20:37:22.248487
+For commit ID 765a2631b04b2f36ae7c11852ca1bcfd6ed07480
+Grading at Fri Dec  8 03:35:49 PM EST 2023
 Doing some basic checking for your submission
 
 Step 1
@@ -87,7 +87,8 @@ No request to check for intermediate deadline completion on step 1
 
 Step 2
 Checking that cyoa-step2 compiles
-g++     cyoa-step2.cpp   -o cyoa-step2
+g++ -o cyoa-step2 -Wall -Werror -std=gnu++98 cyoa-step2.cpp
+g++ -o cyoa-step3 -Wall -Werror -std=gnu++98 cyoa-step3.cpp
 The code compiled (good)
 Executable cyoa-step2 exists (good)
 ------------------------------------
@@ -105,139 +106,149 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 
-2.2: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input0.txt
+2.2: Current test is ./cyoa-step2 ./step2_errorcase2  < ./step2_errorcase2/inputs/input0.txt
+-----------------------------
+Great: we both considered this an error
+----here is what you printed on stderr---
+Error: the destpage does not exist: 26
+-----------------------------------------
+Lets check if it valgrinds:
+Valgrind was clean
+
+
+2.3: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input0.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.3: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input1.txt
+2.4: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input1.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.4: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input2.txt
+2.5: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input2.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.5: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input3.txt
+2.6: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input3.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.6: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input4.txt
+2.7: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input4.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.7: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input5.txt
+2.8: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input5.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.8: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input6.txt
+2.9: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input6.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.9: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input7.txt
+2.10: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input7.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.10: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input8.txt
+2.11: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input8.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.11: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input9.txt
+2.12: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input9.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.12: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input10.txt
+2.13: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input10.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.13: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input11.txt
+2.14: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input11.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.14: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input12.txt
+2.15: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story1  <  /usr/local/ece551/cyoa/story1/inputs/input12.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.15: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input0.txt
+2.16: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input0.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.16: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input1.txt
+2.17: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input1.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.17: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input2.txt
+2.18: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input2.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.18: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input3.txt
+2.19: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input3.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.19: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input4.txt
+2.20: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input4.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.20: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input5.txt
+2.21: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input5.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.21: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input6.txt
+2.22: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input6.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.22: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input7.txt
+2.23: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input7.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.23: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input8.txt
+2.24: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input8.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
 
-2.24: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input9.txt
+2.25: Current test is ./cyoa-step2 /usr/local/ece551/cyoa/story2  <  /usr/local/ece551/cyoa/story2/inputs/input9.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
@@ -245,7 +256,7 @@ No request to check for intermediate deadline completion on step 2
 
 Step 3
 Checking that cyoa-step3 compiles
-g++ -o cyoa-step3 -Wall -Werror -std=gnu++98 cyoa-step3.cpp
+make: 'cyoa-step3' is up to date.
 The code compiled (good)
 Executable cyoa-step3 exists (good)
 ------------------------------------
