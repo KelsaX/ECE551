@@ -182,7 +182,6 @@ void Story::dfsFindPath(std::vector<std::pair<size_t, int> > & path,
         dfsFindPath(path, winningPaths, nextPage, visited);
         // Backtracks by removing the last page and choice from the path.
         path.pop_back();
-        path.pop_back();
       }
     }
   }
