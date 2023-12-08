@@ -6,6 +6,8 @@ cyoa-step1 step1error3
 cyoa-step1 step1error4
 cyoa-step1 step1error5
 cyoa-step1 step1error6
+cyoa-step2 ./step2_errorcase5 <./step2_errorcase5/inputs/input0.txt
+cyoa-step2 ./step2_errorcase3 <./step2_errorcase3/inputs/input0.txt
 cyoa-step2 ./cyoa-step2_test1/ < ./cyoa-step2_test1/inputs/input0.txt
 cyoa-step2 ./step2_errorcase2 <./step2_errorcase2/inputs/input0.txt
 cyoa-step2 /usr/local/ece551/cyoa/story1 < /usr/local/ece551/cyoa/story1/inputs/input0.txt
@@ -80,3 +82,6 @@ cyoa-step4 /usr/local/ece551/cyoa/story3 < /usr/local/ece551/cyoa/story3/inputs/
 cyoa-step4 /usr/local/ece551/cyoa/story3 < /usr/local/ece551/cyoa/story3/inputs/input23.txt
 cyoa-step4 /usr/local/ece551/cyoa/story3 < /usr/local/ece551/cyoa/story3/inputs/input24.txt
 cyoa-step4 /usr/local/ece551/cyoa/story3 < /usr/local/ece551/cyoa/story3/inputs/input25.txt
+cyoa-step4 ./step2_errorcase3 <./step2_errorcase3/inputs/input0.txt
+cyoa-step4 ./step2_errorcase5 <./step2_errorcase5/inputs/input0.txt
+cyoa-step4 ./cyoa-step2_test1/ < ./cyoa-step2_test1/inputs/input0.txt

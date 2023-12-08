@@ -58,6 +58,10 @@ class Story {
   bool isConditionSatisfied(const std::string & condition);
   //check if all the destpage exist
   void checkDestPagesExist();
+  //check if each page is referenced by at least 1 other page
+  void check_page_references();
+  //check if the win page and lose page all exist
+  void checkWinLosePages() const;
 };
 
 //std::string Story::intToString(int num) {
@@ -211,6 +215,31 @@ void Story::dfsFindPath(std::vector<std::pair<size_t, int> > & path,
   }
 }
 */
+//this function is to chaeck if the win page and lose page exist
+void Story::checkWinLosePages() const {
+  bool winExists = false;
+  bool loseExists = false;
+
+  for (std::map<size_t, Page>::const_iterator it = pages.begin(); it != pages.end();
+       ++it) {
+    Page::Type pageType = it->second.getType();
+    if (pageType == Page::W) {
+      winExists = true;
+    }
+    else if (pageType == Page::L) {
+      loseExists = true;
+    }
+  }
+
+  if (!winExists || !loseExists) {
+    std::ostringstream errorStr;
+    errorStr << "Error: Story must have at least one WIN and one LOSE page.";
+    throw std::runtime_error(errorStr.str());
+    // std::cerr << "Error: Story must have at least one WIN and one LOSE page."
+    //        << std::endl;
+  }
+}
+
 //this function is to check if all the destination pages exist
 void Story::checkDestPagesExist() {
   for (std::map<size_t, Page>::const_iterator it = pages.begin(); it != pages.end();
@@ -225,6 +254,43 @@ void Story::checkDestPagesExist() {
     }
   }
 }
+//this function is to check if every page is referenced at least by 1 other page
+void Story::check_page_references() {
+  std::map<size_t, int> referenceCount;
+
+  // Initialize the reference counter, except for page 0
+  for (std::map<size_t, Page>::const_iterator it = pages.begin(); it != pages.end();
+       ++it) {
+    if (it->first != 0) {
+      referenceCount[it->first] = 0;
+    }
+  }
+
+  // Iterate over all pages and their destination pages
+  for (std::map<size_t, Page>::const_iterator it = pages.begin(); it != pages.end();
+       ++it) {
+    std::vector<size_t> destPages = it->second.getTotalDestPages();
+    for (size_t i = 0; i < destPages.size(); ++i) {
+      if (destPages[i] != it->first) {  // Avoid self-reference
+        referenceCount[destPages[i]]++;
+      }
+    }
+  }
+
+  // Check the reference count for each page
+  for (std::map<size_t, int>::iterator it = referenceCount.begin();
+       it != referenceCount.end();
+       ++it) {
+    if (it->second == 0) {
+      std::stringstream errorStr;
+      errorStr << "Error: Page " << it->first << " is not referenced by any other page.";
+      throw std::runtime_error(errorStr.str());
+      // std::cout << "Error: Page " << it->first << " is not referenced by any other page."
+      //          << std::endl;
+    }
+  }
+}
+
 // This function starts the interactive story session. It controls the flow of the story,
 // guiding the user through the pages based on their choices.
 
@@ -233,7 +299,10 @@ void Story::storyStart() {
   while (true) {
     // Updates the story variables for the current page.
     pages[currentPageNum].updateStoryVariables(variables);
+    //check if the story.txt input are valid
     checkDestPagesExist();
+    check_page_references();
+    checkWinLosePages();
     // Retrieves conditions for choices on the current page. Conditions determine if a choice is available.
     //check dest
     std::map<int, std::string> currentConditions = pages[currentPageNum].getConditions();
