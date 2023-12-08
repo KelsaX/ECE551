@@ -7,6 +7,7 @@ cyoa-step1 step1error4
 cyoa-step1 step1error5
 cyoa-step1 step1error6
 cyoa-step2 ./cyoa-step2_test1/ < ./cyoa-step2_test1/inputs/input0.txt
+cyoa-step2 ./step2_errorcase2 <./step2_errorcase2/inputs/input0.txt
 cyoa-step2 /usr/local/ece551/cyoa/story1 < /usr/local/ece551/cyoa/story1/inputs/input0.txt
 cyoa-step2 /usr/local/ece551/cyoa/story1 < /usr/local/ece551/cyoa/story1/inputs/input1.txt
 cyoa-step2 /usr/local/ece551/cyoa/story1 < /usr/local/ece551/cyoa/story1/inputs/input2.txt

@@ -29,6 +29,7 @@ class Page {
   // Returns the destination page number for a given choice.
   size_t getdestPageNum(size_t choice);
   // Adds a condition for a specific choice number.
+
   void addConditions(const std::string & condition, int choiceNum) {
     conditions[choiceNum] = condition;
   }
@@ -45,6 +46,8 @@ class Page {
   // Determines if a specific choice is available, considering unavailable choices.
   bool isChoiceAvailable(const std::vector<int> & unavailableChoices,
                          int currentChoice) const;
+  // Get the total destpage number for error checking.
+  std::vector<size_t> getTotalDestPages() const { return destPages; }
 
  private:
   // Type of the page (Normal, Winning, Losing).

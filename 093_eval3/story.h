@@ -56,6 +56,8 @@ class Story {
   // bool isChoiceAvailable(int choice);
   // Checks if a given condition is satisfied based on the current story variables.
   bool isConditionSatisfied(const std::string & condition);
+  //check if all the destpage exist
+  void checkDestPagesExist();
 };
 
 //std::string Story::intToString(int num) {
@@ -189,14 +191,51 @@ void Story::dfsFindPath(std::vector<std::pair<size_t, int> > & path,
   visited.erase(currentPageNum);
 }
 
+//bool Story::checkPageExists(const std::map<size_t, Page> & pages, size_t pageNumber) {
+// return pages.find(pageNumber) != pages.end();
+//}
+//
+//void checkDestPagesExist(const std::map<size_t, Page> & pages) {
+// for (std::map<size_t, Page>::const_iterator it = pages.begin(); it != pages.end();
+/*       ++it) {
+    const Page & page = it->second;
+    for (std::vector<size_t>::const_iterator destIt = page.getTotalDestPages().begin();
+         destIt != page.getTotalDestPages().end();
+         ++destIt) {
+      size_t destPage = *destIt;
+      if (!checkPageExists(pages, destPage)) {
+        std::cout << "Error: Page " << it->first << " references non-existent page "
+                  << destPage << std::endl;
+      }
+    }
+  }
+}
+*/
+//this function is to check if all the destination pages exist
+void Story::checkDestPagesExist() {
+  for (std::map<size_t, Page>::const_iterator it = pages.begin(); it != pages.end();
+       ++it) {
+    std::vector<size_t> destPages = it->second.getTotalDestPages();
+    for (size_t i = 0; i < destPages.size(); ++i) {
+      if (pages.find(destPages[i]) == pages.end()) {
+        std::ostringstream errorStr;
+        errorStr << "the destpage does not exist: " << destPages[i];
+        throw std::runtime_error(errorStr.str());
+      }
+    }
+  }
+}
 // This function starts the interactive story session. It controls the flow of the story,
 // guiding the user through the pages based on their choices.
+
 void Story::storyStart() {
   size_t currentPageNum = 0;
   while (true) {
     // Updates the story variables for the current page.
     pages[currentPageNum].updateStoryVariables(variables);
+    checkDestPagesExist();
     // Retrieves conditions for choices on the current page. Conditions determine if a choice is available.
+    //check dest
     std::map<int, std::string> currentConditions = pages[currentPageNum].getConditions();
     // for (size_t i = 0; i < pages[currentPageNum].getChoices().size(); i++) {
     //  isChoiceAvailabel(i + 1);
