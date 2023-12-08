@@ -146,18 +146,23 @@ void Story::findWinningPaths() {
   // Calls a depth-first search helper function starting from page 0 to find all winning paths.
   dfsFindPath(path, winningPaths, 0, visited);
   //print the  winning paths
-  for (size_t i = 0; i < winningPaths.size(); ++i) {
-    for (size_t j = 0; j < winningPaths[i].size(); ++j) {
-      std::cout << winningPaths[i][j].first;
-      if (winningPaths[i][j].second != -1) {
-        std::cout << "(" << winningPaths[i][j].second << ")";
+  if (winningPaths.size() == 0) {
+    std::cout << "This story is unwinnable!" << std::endl;
+  }
+  else {
+    for (size_t i = 0; i < winningPaths.size(); ++i) {
+      for (size_t j = 0; j < winningPaths[i].size(); ++j) {
+        std::cout << winningPaths[i][j].first;
+        if (winningPaths[i][j].second != -1) {
+          std::cout << "(" << winningPaths[i][j].second << ")";
+        }
+        if (j < winningPaths[i].size() - 1) {
+          std::cout << ",";
+        }
       }
-      if (j < winningPaths[i].size() - 1) {
-        std::cout << ",";
-      }
-    }
 
-    std::cout << "(win)" << std::endl;
+      std::cout << "(win)" << std::endl;
+    }
   }
 }
 
