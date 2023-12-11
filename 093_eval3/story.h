@@ -277,6 +277,10 @@ void Story::check_page_references() {
     std::vector<size_t> destPages = it->second.getTotalDestPages();
     for (size_t i = 0; i < destPages.size(); ++i) {
       if (destPages[i] != it->first) {  // Avoid self-reference
+        if (pages.at(destPages[i]).getType() == Page::W ||
+            pages.at(destPages[i]).getType() == Page::L) {
+          throw std::runtime_error("Error: WIN or LOSE page referenced by another page.");
+        }
         referenceCount[destPages[i]]++;
       }
     }

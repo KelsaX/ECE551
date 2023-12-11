@@ -115,10 +115,17 @@ void Page::display(std::vector<int> unvailableChoices) const {
   }
   // If the page is a winning page, displays a winning message.
   else if (type == W) {
+    if (choices.size() != 0 || destPages.size() != 0) {
+      throw std::runtime_error("win page can not have choices!");
+    }
+
     std::cout << "Congratulations! You have won. Hooray!";
   }
   // If the page is a losing page, displays a losing message.
   else if (type == L) {
+    if (choices.size() != 0 || destPages.size() != 0) {
+      throw std::runtime_error("Lose page can not have choices!");
+    }
     std::cout << "Sorry, you have lost. Better luck next time!";
   }
   else {
