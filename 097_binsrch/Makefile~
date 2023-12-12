@@ -1,0 +1,2 @@
+test-bsearch:test-bsearch.cpp search.cpp function.h
+	g++ -o test-bsearch -std=gnu++98-pedantic-Werror -Wall -ggdb3 test-bsearch.cpp search.cpp 

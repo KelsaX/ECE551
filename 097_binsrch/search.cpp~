@@ -1,0 +1,23 @@
+#include <cstdlib>
+#include <iostream>
+
+#include "function.h"
+
+int binarySearchForZero(Function<int, int> * f, int low, int high) {
+  if (low == high - 1 || low == high) {
+    return low;
+  }
+  int mid = (high - low) / 2 + low;
+  int ans = f->invoke(mid);
+  if (ans == 0) {
+    return mid;
+  }
+  else if (ans < 0) {
+    binarySearchForZero(f, mid, high);
+  }
+  else {
+    binarySearchForZero(f, low, mid);
+  }
+  std::cout << "failure";
+  exit(EXIT_FAILURE);
+}
