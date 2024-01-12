@@ -1,0 +1,116 @@
+#include <cstdio>
+
+#include "map.h"
+template<typename K, typename V>
+class BstMap : public Map<K, V> {
+ private:
+  class Node {
+   public:
+    K key;
+    V value;
+    Node * left;
+    Node * right;
+    Node(K key, V value) : key(key), value(value), left(NULL), right(NULL) {}
+  };
+  Node * root;
+
+ public:
+  BstMap() : root(NULL) {}
+  Node * addHelper(Node * currentNode, const K & newkey, const V & newvalue) {
+    //base case
+    if (currentNode == NULL) {
+      return new Node(newkey, newvalue);
+    }
+    else {
+      if (newkey < currentNode->key) {
+        currentNode->left = addHelper(currentNode->left, newkey, newvalue);
+        return currentNode;
+      }
+      else if (newkey > currentNode->key) {
+        currentNode->right = addHelper(currentNode->right, newkey, newvalue);
+        return currentNode;
+      }
+      else {
+        return currentNode;
+      }
+    }
+  }
+  virtual void add(const K & newkey, const V & newvalue) {
+    root = addHelper(root, newkey, newvalue);
+  }
+  Node * FindMin(Node * current) {
+    if (current->left == NULL) {
+      return current;
+    }
+    return FindMin(current->left);
+  }
+  Node * removeHelper(Node * currentRoot, const K & deletekey) {
+    if (currentRoot == NULL) {
+      return currentRoot;
+    }
+    else {
+      if (deletekey > currentRoot->key) {
+        currentRoot->right = removeHelper(currentRoot->right, deletekey);
+        return currentRoot;
+      }
+      else if (deletekey < currentRoot->key) {
+        currentRoot->left = removeHelper(currentRoot->left, deletekey);
+        return currentRoot;
+      }
+      else if (deletekey == currentRoot->key) {
+        if (currentRoot->left == NULL && currentRoot == NULL) {
+          delete currentRoot;
+          currentRoot = NULL;
+        }
+        else if (currentRoot->left == NULL && currentRoot != NULL) {
+          Node * temp = currentRoot;
+          currentRoot = temp->right;
+          delete temp;
+          temp = NULL;
+        }
+        else if (currentRoot->left != NULL && currentRoot == NULL) {
+          Node * temp = currentRoot;
+          currentRoot = temp->left;
+          delete temp;
+          temp = NULL;
+        }
+        else if (currentRoot->left != NULL && currentRoot != NULL) {
+          Node * temp = FindMin(currentRoot->right);
+          currentRoot->key = temp->key;
+          currentRoot->value = temp->value;
+          currentRoot->right = removeHelper(currentRoot->right, temp->key);
+        }
+        return currentRoot;
+      }
+    }
+  }
+  virtual void remover(const K & key) { root = removeHelper(root, key); }
+  const V & lookupHelper(Node * current, const K & key) throw(std::invalid_argument) {
+    if (current == NULL) {
+      throw std::invalid_argument("the key dose not exist");
+    }
+    else {
+      if (key > current->key) {
+        return lookupHelper(current->right, key);
+      }
+      else if (key < current->key) {
+        return lookupHelper(current->left, key);
+      }
+      else if (key == current->key) {
+        return current->value;
+      }
+    }
+  }
+  virtual const V & lookup(const K & key) const throw(std::invalid_argument) {
+    return lookupHelper(root, key);
+  }
+  void deleteTree(Node * current) {
+    if (current != NULL) {
+      deleteTree(current->left);
+      deleteTree(current->right);
+      delete current;
+    }
+  }
+
+  virtual ~Map<K, V>() { deleteTree(root); }
+};
